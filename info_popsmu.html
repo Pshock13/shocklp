@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Phillip Shockley/shocklp">
+	<meta name="owner" content="Phillip Shockley/shocklp">
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>POPS Master User</title>
+</head>
+<body>
+    <div id="articleContent">
+        <h1 class="title">POPS Master User Info Page</h1>
+        <h6 class="byline">By: Phillip Shockley [shocklp]</h6>
+        <ul id='pages'>
+            <li>[Info]</li>
+            <li>[Changelog]</li>
+        </ul> 
+        <div id="information">               
+        <dd>
+            <p class="hangIndent">POPS Master User started as a way to scan the check in locations on-screen by displaying a barcode based on where you needed to place an item. Initially a volatile add-on only intended for problem solve leads due to the ability to misuse the add-on (possible to scan a check-in location and forget where you scanned). POPS MU now has a history listing of locations scanned as well as a few other treats.</p>
+            <hr>
+            <p>Functions:</p>
+            <p>
+                <ul>
+                    <li>
+                        <u>Barcode Generator</u>: There are a few situations where POPS MU will generate a barcode.
+                        <ol>
+                            <li>When a loose items goes to overage, select a number to generate the overage bin of your choosing.
+                                <figure>
+                                    <img src="media/overage.png" class="screenshot">
+                                </figure>
+                            </li>
+                            <li>When checking in items, you will either be presented with letters representing the letters of the chutes and then an input field asking for a number to generate the chute to start placing a shipment in. Or if the shipment already has a chute, you will be presented with the barcode for that chute.
+                                
+                            </li>
+                            <li>You can also generate a barcode for the PS totes from packers when selcting "scan from tote or SP00" allowing you to check items in directly from the totes without needing to collect them.
+                                <figure>
+                                    <img src="media/pops_checkin.png" class="screenshot">
+                                </figure>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <u>History List</u>: This list is off to the left side to keep track of the barcodes that have been generated. A history of 5 unique barcodes is kept at any given time. If the same barcode is generated more than once in succession, a number will appear next to the barcode in parenthesis. Each of the barcodes in the list is also a link to FCResearch for that specific barcode.
+                        <figure>
+                            <img src="media/pops_history.png" class="screenshot">
+                        </figure>
+                    </li>
+                    <li>
+                        <u>Settings</u>: A settings menu (&#9881;) can be found in the upper left hand side of the window. Several items include
+                        <ul>
+                            <li>Changing the colors of the pops buttons</li>
+                            <li>Adding a background image</li>
+                            <li>Setting default overage bin</li>
+                            <li>Setting default check-in wall (under construction)</li>
+                            <li>more to come...</li>
+                        </ul>
+                        <figure>
+                            <img src="media/settings.png" class="screenshot">
+                        </figure>
+                    </li>
+                </ul>
+            </p>
+                </dd>
+            </div>
+        <div id="changelog">
+            <h1 class="tape">
+                <span>Under Construction</span>
+            </h1>
+        </div>
+    </div>
+        
+</body>
+
+<script type="text/javascript" src="main.js"></script>
+</html>

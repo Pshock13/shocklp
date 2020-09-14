@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+	<title>Tamper Monkey Script Install Page</title>
+	<meta name="author" content="Phillip Shockley/shocklp">
+	<meta name="owner" content="Phillip Shockley/shocklp">
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body id="top">
+<div id="articleContent">
+	<h1 class="title">Helpful Tools for Problem Solvers</h1>
+	<h6 class="byline">By: Phillip Shockley [shocklp]</h6>
+	<table class="toc">
+		<tbody>
+			<tr>
+				<td>
+					<img class="amzn" src="media/Amazon.png"/>
+					<div class="accordion">Contents</div>
+					<div class="panel">
+						<ul>
+							<li>Sleuth</li>
+							<li>Flow Sortation Workforce</li>
+							<li>Dr. Sku</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h1 class="tape">
+        <span>Under Construction</span>
+    </h1>
+	<dl id="items">
+		<dt>Sleuth</dt>
+		<dd>This tool comes in handy when you have a kickout that "cannot find shipment data" either because of a missed sp00 or the wrong sp00 on the box.<br>
+		Scan the items in the box/container and Sleuth with attempt to find the common container that those items share. (Will not work for multiple of the same item. Requires at least 2 unique ASINs)</dd>
+		<img src="media/help_tools/sleuth.png" alt="">
+		<dt>Flow Sortation Workforce</dt>
+		<dd>This tool will help you locate associates working in AFE</dd>
+		<img src="media/help_tools/workforce.png" alt="">
+        <dt>Dr. SKU</dt>
+		<dd>Dr. Sku can be used to learn many things about aproduct including dimensions. </dd>
+		<img src="media/help_tools/dr_sku.png" alt="">
+    </dl>
+</div>
+</body>
+<script type="text/javascript" src="main.js"></script>
+<script>
+document.getElementById('items').addEventListener('click', function(e){
+	switch(e.target && e.target.innerText){
+		case 'Sleuth':
+            window.open(`https://mastermind.amazon.com/sleuth/?fc=${FC}`, "_self")
+			break;
+		case 'Flow Sortation Workforce':
+            window.open(`https://flow-sortation-na.amazon.com/${FC}/#/afe/workforce`, "_self")
+			break;
+		case 'Dr. SKU':
+            window.open(`https://dr-sku-iad.amazon.com`, "_self")
+			break;
+	}
+	
+})
+</script>
+<style>
+	dl img{
+		border:1px solid #000;
+		width:100%;
+		box-shadow: 2px 2px 5px #146eb4;
+	}
+	dl dt{
+		cursor: pointer;
+		text-decoration: underline;
+		color: rgb(255, 123, 0);
+	}
+	dl *{
+		margin:10px 0;
+	}
+</style>
+</html>

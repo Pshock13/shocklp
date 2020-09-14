@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>PPR Highlighter</title>
+	<meta name="author" content="Phillip Shockley/shocklp">
+	<meta name="owner" content="Phillip Shockley/shocklp">
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body id="top">
+    <div id="articleContent">
+        <h1 class="title">PPR Highlighter Info Page</h1>
+		<h6 class="byline">By: Phillip Shockley [shocklp]</h6>
+		<ul id='pages'>
+			<li>[Info]</li>
+			<li>[Changelog]</li>
+		</ul>
+		<div id="information">
+				<dd>
+					<p>This simple add-on adds check boxes next to each item, highlighting the row when checked. This allows you to much more easily find the items you need. Items checked will persist through refreshes and even computer shutdown.</p>
+				<figure>
+					<img src='media/PPRHighlight.PNG' class='screenshot' width='600px'>
+					<figcaption>PPR with a few items selected for highlight</figcaption>
+				</figure>
+				</dd>
+		</div>
+		<div id="changelog">
+			<span class="version">* 1.0 - 1.5 *</span><br>
+			<div class="changes">
+				<div>* Checkboxes on right side of table to select rows</div>
+				<div>* Highlight color set to <span style="background-color:#8ff;">#8ff</span>.</div>
+				<div>* Positive percentages highlight set to <span style="background-color:#afa;">#afa</span>.</div>
+				<div>* Negative percentages highlight set to <span style="background-color:#faa;">#faa</span>.</div>
+			</div>
+			<span class="version">* 1.6 *</span>
+			<div class="changes">
+				<div>* Percentages over 1,000% now highlight in green rather than red</div>
+			</div>
+			<span class="version">* 1.8 *</span>
+			<div class="changes">
+				<div>* Negative highlight now <span class="under100"> flashes red</span></div>
+				<div>* Red highlight for under 100% now gets removed when unchecking corresponding box</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+<style>
+	.under100 {
+	animation: blink 1s ease-in-out infinite;
+}
+  @keyframes blink {
+    0%  {background-color: #faa;}
+    50% {background-color: #fff;color:#f00}
+    100%{background-color: #faa;}
+  }
+</style>
+<script type="text/javascript" src="main.js"></script>
+</html>

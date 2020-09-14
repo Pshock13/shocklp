@@ -1,0 +1,406 @@
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+	margin:0;
+	background-color: #E6E6E6;
+	padding:0;
+        scroll-behavior: smooth;
+}
+
+nav{
+	position: sticky;
+	float:left;
+	z-index: 999;
+	top:0;
+	width:11em;
+}
+
+nav ul{
+	margin:0;
+	padding:0 0 0 15px;
+	display:inline;
+}
+
+nav ul li{
+	color:#f90;
+	list-style-type: none;
+	margin:5px 0 0 0;
+	padding:5px 15px;
+	background:#f2f2f2;
+	bottom:0;
+	border-radius: 0px 5px 5px 0;
+	box-shadow: 2px 2px 5px #146eb4;
+	text-align:center;
+	cursor: pointer;
+	user-select: none;
+	-moz-user-select: none;
+}
+
+nav li:hover {
+    background-color: #ff9900;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: #fff;
+}
+
+.shortie{
+	width:9em;
+}
+
+h1.title{
+	margin-bottom:0;
+}
+
+#thisPage{
+	color: #fff;
+	text-shadow: 2px 2px 5px #000;
+	background:#f90;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+	background-color: #146eb4;
+	color: #fff;
+	cursor: pointer;
+	padding: 5px;
+	width: 50%;
+	text-align: left;
+	border: none;
+	outline: none;
+	transition: 0.4s;
+	-moz-user-select: none;
+	border-radius:20px;
+	text-indent:10px;
+}
+
+.accordion::before {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	font-size: 10px;
+	color: #777;
+	float: left;
+	/*margin-left: 5px;*/
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+	background-color: #ccc;
+}
+
+.active::before {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.2s ease-in-out;
+}
+
+#articleContent {
+	background-color:#f2f2f2;
+	padding:20px 100px 50px 100px;
+	margin:0 100px 0 100px;
+	box-shadow:1px 1px 5px #146eb4;
+	min-height:99vh;
+}
+
+table.toc{
+	width:100%;
+}
+
+a, a:visited{
+	color:#ff9900;
+}
+
+a:hover{
+	color:#146eb4;
+}
+
+a li:hover{
+	background-color:#f00;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	color: #fff;
+}
+
+.headline{
+	font-size:24;
+	font-weight:bold;
+	text-decoration:underline;
+}
+
+.warning{
+	width:80%;
+	margin:2em auto 2em auto;
+	background-color:#fff0f0;
+	border:1px dashed #FF0F13;
+	border-left:7px solid #ffb0b0;
+	padding:5px;
+}
+
+.idea{
+	width:80%;
+	margin:2em auto 2em auto;
+	background-color:#fffff0;
+	border:1px dashed #ffef0f;
+	border-left:7px solid #feffb0;
+	padding:5px;
+}
+
+table.install{
+	width:90%;
+	margin:0 auto 1em auto;
+	border:1px outset black;
+	background-color:#fff;
+	box-shadow:1px 1px 5px #146eb4;
+}
+
+.descCell{
+	width:60%;
+}
+
+table.install th,
+table.install td{
+	border:2px outset #000;
+	padding:10px;
+}
+
+th.button{
+	width:100px;
+}
+
+.noClick{
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+#reminder{
+	text-decoration:underline;
+	text-decoration-color: rgb(255, 123, 0);
+	font-weight:bold;
+}
+input{
+	box-shadow:1px 1px 5px #146eb4;
+	border:2px outset #000;
+	transition-duration: 0.6s;
+	border-radius:0px;
+	width:100%;
+}
+.install input:hover{
+	color:white;
+	background-color:limegreen;
+	border:2px outset green;
+	cursor:pointer;
+	border-radius:10px;
+}
+#install_btn{
+	height:50px;
+	animation: notify 3s ease-in-out infinite;
+	text-shadow: 1px 1px 1px #fff 1px -1px -1px #fff;
+	cursor:pointer;
+}
+  @keyframes notify {
+	0%,100%{background-color: #f90;
+			box-shadow:1px 1px 5px #146eb4;
+			text-shadow:1px 1px 5px #146eb4;
+			color:#000;}
+	50% {	background-color:  #146eb4;
+			box-shadow:1px 1px 5px #f90;
+			text-shadow:1px 1px 5px #f90;
+			color:#fff;}
+  }
+
+
+
+input.disabled:hover, input.disabled{
+	cursor:not-allowed;
+	pointer-events: none;
+	opacity:0.3;
+	background-color:none;
+}
+
+img.logo{
+	width:32px;
+}
+
+#hitchpic{
+	width:1400px;
+}
+
+img.what{
+	width:18px;
+	border-radius:100%;
+	position:relative;
+	float:right;
+	cursor:help;
+}
+
+.whatinfo{
+	width:1400px;
+	position: absolute;
+	margin:10px auto;
+	left:50%;
+	margin-left:-700px;
+	background-color: white;
+	color: black;
+	border-radius: 20px;
+	display:none;
+	box-shadow:10px 10px 50px #000;
+	z-index:100;
+}
+
+.what:hover + .whatinfo{
+	display:block;
+}
+
+table.pad td{
+	padding:10px;
+}
+
+.amzn{
+	float:right;
+	height:200px;
+	/*padding-right:100px;*/
+}
+
+.screenshot{
+	border:1px solid #000;
+	width:100%;
+	box-shadow: 2px 2px 5px #146eb4;
+}
+
+.fl_right{
+	float:right;
+}
+
+.byline{
+	margin-top:0;
+	margin-left:25px;
+	color:#8A8A8A;
+}
+
+figure{
+	display: inline-block;
+	background:rgb(255, 207, 134);
+	border-radius: 5px;
+	box-shadow:3px 3px 5px #000;
+}
+
+
+figcaption{
+	text-align:center;
+}
+
+.info{
+	width:20px;
+	margin:0 auto;
+}
+
+.infopic{
+	border:2px solid black;
+	box-shadow: 3px 3px 5px #000;
+}
+
+dt{
+	/*font-size:20px;*/
+	font-weight: 600
+}
+
+.redCpt{
+	background-color:#f88;
+}
+
+.yellowCpt{
+	background-color:#ff3;
+}
+
+#peccy{
+	width:300px;
+	position: sticky;
+	float:right;
+	opacity: 1.0;
+	z-index:100;
+	margin-right:-150px;
+	bottom:-225px;
+	margin-bottom:0;
+	border:none;
+	box-shadow: none;
+	/*pointer-events: none;*/ /*Activating this disables the 'back top top' ability*/
+}
+
+@media (max-width:1100px){
+    .amzn{
+		padding-right:0px;
+		float:unset;
+    }
+    .accordion{
+		width:100%;
+	}
+	#articleContent{
+		margin-right:0;
+		transition: .3s;
+		padding-right: 5%;
+	}
+	#peccy{
+		display: none;
+	}
+}
+div.scripttitle{
+	font-weight:bold;
+	font-size:24px;
+	color:#f90;
+	text-decoration:underline;
+	padding-bottom:10px;
+	text-shadow: 2px 2px 2px #000;
+}
+span.version{
+	text-shadow: 2px 2px 2px #f90;
+	font-weight: bold;
+}
+.changes{
+	margin:10px 0;
+}
+.changes div{
+	padding-left:60px;
+	text-indent:-40px;
+	margin-bottom:5px;
+}
+
+.hangIndent{
+	padding-left: 20px;
+    text-indent: -20px;
+}
+
+.hidden{
+	display:none;
+}
+#pages li{
+	display:inline;
+	list-style-type: none;
+	cursor: pointer;
+}
+
+.tape{
+	background: #222;
+	font-size:3em;
+	margin: 5% 0 0;
+	height: 160px;
+	line-height:160px;
+	background-image: linear-gradient(90deg,#222,transparent,#222),linear-gradient(transparent 30px, #ff0 30px), repeating-linear-gradient(45deg, transparent, transparent 35px, #ff0 35px, #ff0 70px);
+	background-size: auto,auto 132px,auto;
+	text-align: center;
+	
+}
+.tape span{
+	cursor:default;
+	color:#222;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+}

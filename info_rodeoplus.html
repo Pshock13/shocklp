@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Phillip Shockley/shocklp">
+	<meta name="owner" content="Phillip Shockley/shocklp">
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+    <title>Rodeo Plus</title>
+</head>
+<body>
+    <div id="articleContent">
+        <h1 class="title">Rodeo Plus Info Page</h1>
+        <h6 class="byline">By: Phillip Shockley [shocklp]</h6>
+            <ul id='pages'>
+                <li>[Info]</li>
+                <li>[Changelog]</li>
+            </ul>
+            
+        <div id="information">
+            <dl>
+                <dd>
+                    <p class="hangIndent">Rodeo Plus started out as a plug-in called 'Bypass Hitch' as it had just one simple task, avoid going to Hitch Tool which at that time had been depricated though links to the tool still survived. The task of this plug-in at the time was to take links that would send you to Hitch Tool and reroute them to OOPS Tool (for ShipIDs) or to FCResearch (for ASINs and locations). Since it's inception, OOPS Tool has also been depricated in favor of the POPS Tool. Now ShipIDs will open a new rodeo tab that show the items needed for that shipment.</p>
+                    <h4>Functions:</h4>
+                    <p>
+                        <ul>
+                            <li><u>ShipIDs</u>: Links open a new window to rodeo showing all items for that shipmnet.</li>
+                            <li><u>ASINs, locations, sp00s</u>: These links will open as a search in FCResearch.</li>
+                            <li><u>Copy Clipboard</u>: Next to shipIDs will be an invisible clipboard that shows up when hovered. Pressing it will copy the shipID and trim the white space (an issue that was presented when pasting IDs in chat or pslipUI.)<br>
+                                <figure>
+                                    <img src="media/clipboard.png" class="screenshot"/>
+                                    <figcaption></figcaption>
+                                </figure></li>
+                            <li>
+                                <u>CPT highlighter</u>: Highlight the cell of the expected ship date when the shipment is a CPT.<br>
+                                <span class="redCpt">&nbsp;red </span> for shipments due out within 1.5hrs from expected ship date (roughly 1 hour from PAD time) and <span class = "yellowCpt">yellow</span> for shipments due out in the next 2.5hrs.<br>
+                                <figure>
+                                    <img src="media/cptHighlight.png" class="screenshot"/>
+                                    <figcaption></figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <u>Condition Tooltip</u>: Hovering over a cell in the 'condition' column will show a tooltip with a short description.<br>
+                                <figure>
+                                    <img src="media/conditionTooltip.png" class="screenshot"/>
+                                    <figcaption></figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <u>Gift Wrap Icon</u>: Cells with any condition pertaining to gift wrap shipments will have a little gift icon next to the condition.<br>
+                                <figure>
+                                    <img src="media/gwIcon.png" class="screenshot"/>
+                                    <figcaption></figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <u>Tote Checker</u>: Sometimes when totes are scanned, they don't scan all the characters in the barcode or they capitalize letters that shouldn't be capitalized. When this happens, the physical tote may get lost if the sorter scans the tote correctly when a picker didn't. This add-on will have a tooltip on-hover as well as highlight these 'bad scan' totes with a red blinking animation so that they can be recognized and dealt with sooner rather than later.<br>
+                                <figure>
+                                    <img src="media/badScan.gif" class="screenshot"/>
+                                    <figcaption></figcaption>
+                                </figure>
+                            </li>
+                        </ul>
+                    </p>
+                    <p>Rodeo Plus will continue to have new functionality added to it. A few things currently in the works:<br>
+                    <ul>
+                        <li>
+                            <u>Pop-up FCResearch</u>: Instead of opening a new tab to see the item when clicking on the ASIN, there will be a pop-up of some sort to show the item image and maybe some other key information.
+                        </li>
+                        <li>
+                            <u>ASIN title on hover</u>: Currently there is a rodeo option to have a column to display the title of the ASIN. This takes up width on screen and truncates the title to the width of the cell. I'd like to have the ASIN title show up under the cursor when you hover ofver the ASIN.
+                        </li>
+                    </ul>
+                    </p>
+                </dd>
+            </dl>
+        </div>
+<div id="changelog">
+    <span class="version">* 1.0.x *</span><br>
+    <div class="changes">
+        <div>* Shipment ID ==> OOPS now only effects the shipID numbers on the page and not the link to the amazon item page</div>
+        <div>* Scannable ID ==> scannable IDs such as sp00s and totes link directly to FCResearch (mod locations like P-2-A151B542 are currently broken)</div>
+        <div>* Mod locations now also link to FCResearch</div>
+        <div>* Adding padding to the inner left side of table cells to make for easier double-click selecting.</div>
+        <div>* Shipment ID no longer links to OOPS (OOPS depricated)</div>
+        <div>* Shipment ID opens a new page for that Shipment ID in Rodeo</div>
+        <div>* Code should work in any FC now.</div>
+        <div>* Links for euler, hero, aps, and filter are now always visible and spaced cleaner.</div>
+        <div>* Mod locations ==> Links to locations with underscores(ie. ppSLAM_403) will now properly link to the correct page.</div>
+        <div>* Whitespace no longer gets copied when selecting shipID (by double-click)</div>
+        <div>* Determining the FC is far more reliable now.</div>
+    </div>
+
+    <span class="version">* 1.1.x *</span><br>
+    <div class="changes">
+        <div>* Bypass Hitch now does more! and will be referred to as Rodeo Plus.</div>
+        <div>* Added a copy button that copies the shipID and trims the whitespace. Notifies user with a yellow blinking cell</div>
+        <div>* Yellow highlight for copy button now blinks on the entire cell rather than just around the numbers</div>
+    </div>
+
+    <span class="version">* 1.2.x *</span>
+    <div class="changes">
+        <div>* CPT Highlighter added.</div>
+        <div>* Version control: Version can be seen by hovering over the Rodeo Plus logo</div>
+        <div>* Slight tweak to CPT highlighter: highlight red for shipments due out in 1.5 hrs or less or yellow for 2.5 hours or less</div>
+        <div>* Adding the clipboard to the cells now relies on the title of the column rather than the hope that the shipment column is the second column in the table</div>
+        <div>* Tool tip added to copy shipment ID clipboard</div>
+        <div>* Conditions tooltip added</div>
+        <div>* Giftwrap icon added</div>
+    </div>
+    
+    <span class="version">* 1.3.x *</span>
+    <div class="changes">
+        <div>* Bad Tote Scan Highlighter - highlights totes that weren't scanned properly</div>
+        <div>* Includes 'Bad Tote Scan' tooltip</div>
+        <div>* New Rodeo+ logo</div>
+        <div>* Update to regex for mods to include some odd locations like  P-2-A106A95 where there are only 2 trailing digits</div>
+        <div>* Added mezz Giftwrap to the list of acceptable scans for the bad scan highlighter</div>
+        <div>* Added copy button to "Scannable ID" column cells</div>
+        <div>* Fixed a bug that occurred when scannable ID copy buttons were added where blank cells would flash red as if they were bad tote scans.</div>
+        <div>* Turned off tool tips for copy buttons until all quick link buttons have been establshed</div>
+        <div>* Copy button clipboards have been push to the right side of the cells to line everything up</div>
+        <div>* Removed flex box from conditions column to keep numbers centered</div>
+        <div>* Added AFE's PS totes to the list of scannable IDs for the bad tote scan addon.</div>
+        <div>* Added an update button between the search bar and the help button in the header for easier access to updates.</div>
+        <div>* Variables used in defining columns now have `if` statements so that they don't run if they are undefined. This helps the script to run on the trans-shipment page where there are no columns like "condition"</div>
+        <div>* Clipboards for copying the scannable ID now show on the transshipments page.</div>
+    </div>
+    
+    <span class="version">* 1.4.x *</span>
+    <div class="changes">
+        <div>* <del>Save the HREFs from euler, hero, aps, and filter buttons</del></div>
+        <div>* <del>Removed current euler, hero, aps, and filter buttons(quick links)</del></div>
+        <div>* <del>Added in newer quicklinks</del></div>
+        <div>* <del>Removed padding-right from the shipment cells that was used for the old quick links</del></div>
+        <div>* <del>Added links from old buttons to the new ones</del></div>
+        <div>* FN SKU column now has a copy button</div>
+        <div>* Added case stickers as accepted locations for the bad scan checker ex: csXP25cXxz5</div>
+        <div>* Stop most of the script from running if loading over 300 items (Clipboards, CPTs, & updated links still function)<br>
+            -Includes a notification at the top of the page stating that scripts have been disabled because of too many items<br>
+            -Notification also has the option to restart other functions after page loads<br>
+            -'Scripts Re-enabled!' notification replaces original notification when enabling scripts</div>
+        <div>* Main banner and table header are now sticky and will stick to the top of the page when scrolling down a long page</div>
+        <div>* Removed CSS page in favor of styles built into the user.js file. This will stop things from breaking when updated CSS and the user not yet updating to the latest script.</div>
+        <div>* Switched the clipboard text symbol for a copy icon .png (the clipboard was being copied when manually selecting text.)</div>
+        <div>* Now when there are more than one of the same item for a shipment, the cell in the "Quantity" column will highlight.</div>
+    </div>
+    <span class="version">* 1.5.x *</span>
+    <div class="changes">
+        <div>* ASINs now have a print button to the right of the copy button to print labels straight from Rodeo</div>
+        <div>* tspsAFESLAM totes now get a <span style=background-color:rgb(191,128,255)>purple</span> border like other problem solve totes</div>
+    </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="main.js"></script>
+
+</html>
