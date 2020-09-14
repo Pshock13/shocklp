@@ -1,0 +1,23 @@
+hr{
+    margin:30px 0;
+}
+
+.atrops_headline{
+    text-align: center;
+    display:block;
+	font-weight:bold;
+    text-decoration:underline;
+    margin:10px 0;
+}
+
+@media (max-width:1100px){
+
+	#articleContent{
+		margin-right:0;
+		transition: .3s;
+		padding-right: 5%;
+	}
+	#peccy{
+		display: none;
+	}
+}
