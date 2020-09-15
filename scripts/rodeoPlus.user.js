@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.3
+// @version      1.5.4
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -544,7 +544,7 @@ function toteChecker(){
             var cart = currentScan.match(/rb[A-Z]{2,3}\w*/); //ex: rbMM2574A05
             var mezzps = currentScan.match(/chPSSNG\w{6,7}/); //ex: chPSSNG1W01A10
             var mezzgw = currentScan.match(/chPSGWW\d{2}[A-Z]\d+/); //ex: chPSGWW01A2
-            var mezzrbin = currentScan.match(/rbbfall0\d{2}[A-Z]\d{2}/);  //ex:  rbbfall059B03
+            var mezzrbin = currentScan.match(/rbbfall\d{3}[A-Z]\d{2}/);  //ex:  rbbfall059B03
             var oops = currentScan.match(/ch[PR]OOPS\w\d{3}/); //ex: chPOOPSA014
             var EXCP = currentScan.match(/tsEXCPRebin01/); //ex:tsEXCPRebin01
             var ooo = currentScan.match(/D\w{8}/); //ex: DqVQgr8Bz
