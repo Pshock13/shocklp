@@ -7,9 +7,9 @@
 // @match        https://fclm-portal.amazon.com/reports/processPathRollup*
 // @grant        GM_info
 // @grant        GM_addStyle
-// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/PPR_Highlighter.user.js
-// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/PPR_Highlighter.user.js
-// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/PPR_Highlighter.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/raw/master/scripts/PPR_Highlighter.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/raw/master/scripts/PPR_Highlighter.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/raw/master/scripts/PPR_Highlighter.user.js
 // @run-at       document-end
 // ==/UserScript==
 

@@ -7,9 +7,9 @@
 // @match        http://aft-pops-iad.aka.amazon.com/*
 // @grant        GM_info
 // @grant        GM_addStyle
-// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
-// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
-// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/raw/master/scripts/POPS_MU.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/raw/master/scripts/POPS_MU.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/raw/master/scripts/POPS_MU.user.js
 // @require      https://code.jquery.com/jquery-3.3.1.js
 /*// @require      https://github.com/lindell/JsBarcode/releases/download/v3.11.0/JsBarcode.all.jss*/
 // @require      https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js
