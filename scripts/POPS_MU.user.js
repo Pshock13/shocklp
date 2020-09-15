@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.2
+// @version      1.4.3
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
 // @grant        GM_info
 // @grant        GM_addStyle
-// @downloadURL  https://drive.corp.amazon.com/view/shocklp@/Scripts/POPS_MU.user.js
-// @updateURL    https://drive.corp.amazon.com/view/shocklp@/Scripts/POPS_MU.user.js
-// @sourceURL    https://drive.corp.amazon.com/view/shocklp@/Scripts/POPS_MU.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/POPS_MU.user.js
 // @require      https://code.jquery.com/jquery-3.3.1.js
 /*// @require      https://github.com/lindell/JsBarcode/releases/download/v3.11.0/JsBarcode.all.jss*/
 // @require      https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js

@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.1
+// @version      1.5.2
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
-// @downloadURL  https://drive.corp.amazon.com/view/shocklp@/Scripts/rodeoPlus.user.js
-// @updateURL    https://drive.corp.amazon.com/view/shocklp@/Scripts/rodeoPlus.user.js
-// @sourceURL    https://drive.corp.amazon.com/view/shocklp@/Scripts/rodeoPlus.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/rodeoPlus.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/rodeoPlus.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/rodeoPlus.user.js
 // @grant        GM_setClipboard
 // @grant        GM_addStyle
 // @grant        GM_info
