@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.3
+// @version      1.4.4
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
@@ -303,6 +303,20 @@ function popsMU(){
             newInstructions.innerHTML = '<h2> Scan a SP00 or select a number below to generate PS tote barcode</h2>';
             newDiv.appendChild(newInstructions);
 
+            var x =document.getElementsByClassName('page-type-image')
+
+            for (var i = x.length-1; i >= 0; i--) {
+                x[i].remove();
+            }
+
+            //insert text box that generates custom barcodes on the fly
+            var customInput = document.createElement('input');
+            customInput.placeholder="Enter custom barcode";
+            newDiv.appendChild(customInput);
+            customInput.focus();
+            customInput.addEventListener('input',function(e){
+                JsBarcode("#barcode",e.target.value)
+            })
             newDiv.appendChild(barcodeElement);
             JsBarcode("#barcode",`tsAFE1pslv1`);
             for(var i=0;i<18;i++){

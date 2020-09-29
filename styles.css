@@ -123,7 +123,7 @@ a:hover{
 }
 
 a li:hover{
-	background-color:#f00;
+	background-color:#146eb4;
 	border-top-right-radius:10px;
 	border-bottom-right-radius:10px;
 	color: #fff;
@@ -362,14 +362,6 @@ div.scripttitle{
 span.version{
 	text-shadow: 2px 2px 2px #f90;
 	font-weight: bold;
-}
-.changes{
-	margin:10px 0;
-}
-.changes div{
-	padding-left:60px;
-	text-indent:-40px;
-	margin-bottom:5px;
 }
 
 .hangIndent{

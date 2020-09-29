@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.4
+// @version      1.5.5
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -533,13 +533,13 @@ function toteChecker(){
         for(var l=0; l<scanColumn.length; l++){
             //scannableColumn[l].parentElement.classList.add('scannable'); //add class to scannable cell
             var currentScan = scanColumn[l].innerText;
-            var tote = currentScan.match(/tsX0[a-z0-9]{7}\b/); //ex: tsX08bspifr
+            var tote = currentScan.match(/tsX0[a-z0-9]{7}\b/); //ex: tsX0388hygx
             var wall = currentScan.match(/ch[PR]Afe\d{3}[B-F]\d{3}/); //ex: chRAfe082E012
             var tray = currentScan.match(/st\d{7}/); //ex: st9507389
             var swp = currentScan.match(/tspsCollA10\d/); //ex: tspsCollA103
             var sp00 = currentScan.match(/sp\w{9}/); //ex: spGXxfrbvhz
             var mods = currentScan.match(/[PR]-\d-[A-Z]\d{2,3}[A-Z]\d{2,3}/); //ex: P-1-B173C553
-            var prob = currentScan.match(/chPSMAINW\w{4,}/); //ex: chPSMAINW03E22
+            var prob = currentScan.match(/chPSMAIN[\d]?W\w{4,}/); //ex: chPSMAINW03E22 or chPSMAIN1W03E22
             var rbin = currentScan.match(/tsAfe\w{5}/); //ex: tsAfeRsG8
             var cart = currentScan.match(/rb[A-Z]{2,3}\w*/); //ex: rbMM2574A05
             var mezzps = currentScan.match(/chPSSNG\w{6,7}/); //ex: chPSSNG1W01A10

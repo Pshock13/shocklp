@@ -76,81 +76,83 @@
             </dl>
         </div>
 <div id="changelog">
-    <span class="version">* 1.0.x *</span><br>
-    <div class="changes">
-        <div>* Shipment ID ==> OOPS now only effects the shipID numbers on the page and not the link to the amazon item page</div>
-        <div>* Scannable ID ==> scannable IDs such as sp00s and totes link directly to FCResearch (mod locations like P-2-A151B542 are currently broken)</div>
-        <div>* Mod locations now also link to FCResearch</div>
-        <div>* Adding padding to the inner left side of table cells to make for easier double-click selecting.</div>
-        <div>* Shipment ID no longer links to OOPS (OOPS depricated)</div>
-        <div>* Shipment ID opens a new page for that Shipment ID in Rodeo</div>
-        <div>* Code should work in any FC now.</div>
-        <div>* Links for euler, hero, aps, and filter are now always visible and spaced cleaner.</div>
-        <div>* Mod locations ==> Links to locations with underscores(ie. ppSLAM_403) will now properly link to the correct page.</div>
-        <div>* Whitespace no longer gets copied when selecting shipID (by double-click)</div>
-        <div>* Determining the FC is far more reliable now.</div>
-    </div>
 
-    <span class="version">* 1.1.x *</span><br>
-    <div class="changes">
-        <div>* Bypass Hitch now does more! and will be referred to as Rodeo Plus.</div>
-        <div>* Added a copy button that copies the shipID and trims the whitespace. Notifies user with a yellow blinking cell</div>
-        <div>* Yellow highlight for copy button now blinks on the entire cell rather than just around the numbers</div>
-    </div>
+    <span class="version">* 1.5.x *</span>
+    <ul>
+        <li>ASINs now have a print button to the right of the copy button to print labels straight from Rodeo</li>
+        <li>tspsAFESLAM totes now get a <span style=background-color:rgb(191,128,255)>purple</span> border like other problem solve totes</li>
+    </ul>
 
-    <span class="version">* 1.2.x *</span>
-    <div class="changes">
-        <div>* CPT Highlighter added.</div>
-        <div>* Version control: Version can be seen by hovering over the Rodeo Plus logo</div>
-        <div>* Slight tweak to CPT highlighter: highlight red for shipments due out in 1.5 hrs or less or yellow for 2.5 hours or less</div>
-        <div>* Adding the clipboard to the cells now relies on the title of the column rather than the hope that the shipment column is the second column in the table</div>
-        <div>* Tool tip added to copy shipment ID clipboard</div>
-        <div>* Conditions tooltip added</div>
-        <div>* Giftwrap icon added</div>
-    </div>
-    
-    <span class="version">* 1.3.x *</span>
-    <div class="changes">
-        <div>* Bad Tote Scan Highlighter - highlights totes that weren't scanned properly</div>
-        <div>* Includes 'Bad Tote Scan' tooltip</div>
-        <div>* New Rodeo+ logo</div>
-        <div>* Update to regex for mods to include some odd locations like  P-2-A106A95 where there are only 2 trailing digits</div>
-        <div>* Added mezz Giftwrap to the list of acceptable scans for the bad scan highlighter</div>
-        <div>* Added copy button to "Scannable ID" column cells</div>
-        <div>* Fixed a bug that occurred when scannable ID copy buttons were added where blank cells would flash red as if they were bad tote scans.</div>
-        <div>* Turned off tool tips for copy buttons until all quick link buttons have been establshed</div>
-        <div>* Copy button clipboards have been push to the right side of the cells to line everything up</div>
-        <div>* Removed flex box from conditions column to keep numbers centered</div>
-        <div>* Added AFE's PS totes to the list of scannable IDs for the bad tote scan addon.</div>
-        <div>* Added an update button between the search bar and the help button in the header for easier access to updates.</div>
-        <div>* Variables used in defining columns now have `if` statements so that they don't run if they are undefined. This helps the script to run on the trans-shipment page where there are no columns like "condition"</div>
-        <div>* Clipboards for copying the scannable ID now show on the transshipments page.</div>
-    </div>
-    
     <span class="version">* 1.4.x *</span>
-    <div class="changes">
-        <div>* <del>Save the HREFs from euler, hero, aps, and filter buttons</del></div>
-        <div>* <del>Removed current euler, hero, aps, and filter buttons(quick links)</del></div>
-        <div>* <del>Added in newer quicklinks</del></div>
-        <div>* <del>Removed padding-right from the shipment cells that was used for the old quick links</del></div>
-        <div>* <del>Added links from old buttons to the new ones</del></div>
-        <div>* FN SKU column now has a copy button</div>
-        <div>* Added case stickers as accepted locations for the bad scan checker ex: csXP25cXxz5</div>
-        <div>* Stop most of the script from running if loading over 300 items (Clipboards, CPTs, & updated links still function)<br>
+    <ul>
+        <li><del>Save the HREFs from euler, hero, aps, and filter buttons</del></li>
+        <li><del>Removed current euler, hero, aps, and filter buttons(quick links)</del></li>
+        <li><del>Added in newer quicklinks</del></li>
+        <li><del>Removed padding-right from the shipment cells that was used for the old quick links</del></li>
+        <li><del>Added links from old buttons to the new ones</del></li>
+        <li>FN SKU column now has a copy button</li>
+        <li>Added case stickers as accepted locations for the bad scan checker ex: csXP25cXxz5</li>
+        <li>Stop most of the script from running if loading over 300 items (Clipboards, CPTs, & updated links still function)<br>
             -Includes a notification at the top of the page stating that scripts have been disabled because of too many items<br>
             -Notification also has the option to restart other functions after page loads<br>
-            -'Scripts Re-enabled!' notification replaces original notification when enabling scripts</div>
-        <div>* Main banner and table header are now sticky and will stick to the top of the page when scrolling down a long page</div>
-        <div>* Removed CSS page in favor of styles built into the user.js file. This will stop things from breaking when updated CSS and the user not yet updating to the latest script.</div>
-        <div>* Switched the clipboard text symbol for a copy icon .png (the clipboard was being copied when manually selecting text.)</div>
-        <div>* Now when there are more than one of the same item for a shipment, the cell in the "Quantity" column will highlight.</div>
-    </div>
-    <span class="version">* 1.5.x *</span>
-    <div class="changes">
-        <div>* ASINs now have a print button to the right of the copy button to print labels straight from Rodeo</div>
-        <div>* tspsAFESLAM totes now get a <span style=background-color:rgb(191,128,255)>purple</span> border like other problem solve totes</div>
-    </div>
-    </div>
+            -'Scripts Re-enabled!' notification replaces original notification when enabling scripts</li>
+        <li>Main banner and table header are now sticky and will stick to the top of the page when scrolling down a long page</li>
+        <li>Removed CSS page in favor of styles built into the user.js file. This will stop things from breaking when updated CSS and the user not yet updating to the latest script.</li>
+        <li>Switched the clipboard text symbol for a copy icon .png (the clipboard was being copied when manually selecting text.)</li>
+        <li>Now when there are more than one of the same item for a shipment, the cell in the "Quantity" column will highlight.</li>
+        </ul>
+    
+    <span class="version">* 1.3.x *</span>
+    <ul>
+        <li>Bad Tote Scan Highlighter - highlights totes that weren't scanned properly</li>
+        <li>Includes 'Bad Tote Scan' tooltip</li>
+        <li>New Rodeo+ logo</li>
+        <li>Update to regex for mods to include some odd locations like  P-2-A106A95 where there are only 2 trailing digits</li>
+        <li>Added mezz Giftwrap to the list of acceptable scans for the bad scan highlighter</li>
+        <li>Added copy button to "Scannable ID" column cells</li>
+        <li>Fixed a bug that occurred when scannable ID copy buttons were added where blank cells would flash red as if they were bad tote scans.</li>
+        <li>Turned off tool tips for copy buttons until all quick link buttons have been establshed</li>
+        <li>Copy button clipboards have been push to the right side of the cells to line everything up</li>
+        <li>Removed flex box from conditions column to keep numbers centered</li>
+        <li>Added AFE's PS totes to the list of scannable IDs for the bad tote scan addon.</li>
+        <li>Added an update button between the search bar and the help button in the header for easier access to updates.</li>
+        <li>Variables used in defining columns now have `if` statements so that they don't run if they are undefined. This helps the script to run on the trans-shipment page where there are no columns like "condition"</li>
+        <li>Clipboards for copying the scannable ID now show on the transshipments page.</li>
+    </ul>
+    
+    <span class="version">* 1.2.x *</span>
+    <ul>
+        <li>CPT Highlighter added.</li>
+        <li>Version control: Version can be seen by hovering over the Rodeo Plus logo</li>
+        <li>Slight tweak to CPT highlighter: highlight red for shipments due out in 1.5 hrs or less or yellow for 2.5 hours or less</li>
+        <li>Adding the clipboard to the cells now relies on the title of the column rather than the hope that the shipment column is the second column in the table</li>
+        <li>Tool tip added to copy shipment ID clipboard</li>
+        <li>Conditions tooltip added</li>
+        <li>Giftwrap icon added</li>
+    </ul>
+    
+    <span class="version">* 1.1.x *</span><br>
+    <ul>
+        <li>Bypass Hitch now does more! and will be referred to as Rodeo Plus.</li>
+        <li>Added a copy button that copies the shipID and trims the whitespace. Notifies user with a yellow blinking cell</li>
+        <li>Yellow highlight for copy button now blinks on the entire cell rather than just around the numbers</li>
+    </ul>
+
+    <span class="version">* 1.0.x *</span><br>
+    <ul>
+        <li>Shipment ID ==> OOPS now only effects the shipID numbers on the page and not the link to the amazon item page</li>
+        <li>Scannable ID ==> scannable IDs such as sp00s and totes link directly to FCResearch (mod locations like P-2-A151B542 are currently broken)</li>
+        <li>Mod locations now also link to FCResearch</li>
+        <li>Adding padding to the inner left side of table cells to make for easier double-click selecting.</li>
+        <li>Shipment ID no longer links to OOPS (OOPS depricated)</li>
+        <li>Shipment ID opens a new page for that Shipment ID in Rodeo</li>
+        <li>Code should work in any FC now.</li>
+        <li>Links for euler, hero, aps, and filter are now always visible and spaced cleaner.</li>
+        <li>Mod locations ==> Links to locations with underscores(ie. ppSLAM_403) will now properly link to the correct page.</li>
+        <li>Whitespace no longer gets copied when selecting shipID (by double-click)</li>
+        <li>Determining the FC is far more reliable now.</li>
+    </ul>
+</div>
 </div>
 </body>
 <script type="text/javascript" src="main.js"></script>
