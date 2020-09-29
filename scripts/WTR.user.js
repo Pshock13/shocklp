@@ -4,9 +4,9 @@
 // @version      0.5
 // @description  Renames the workflow tabs so that they are different
 // @author       Phillip Shockley | shocklp
-// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
-// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
-// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
 // @match        https://flow-sortation-na.amazon.com/*
 // @grant        none
 // @run-at       document-end
