@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.5
+// @version      1.5.7
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -285,7 +285,7 @@ document.querySelectorAll('table a[href*="container-display.html?container="]')
     var asinTh      = Array.from(allTh).find(th => th.innerText === 'FN SKU');
     var outerTh     = Array.from(allTh).find(th => th.innerText === 'Outer Scannable ID');
     var quantityTh    = Array.from(allTh).find(th => th.innerText === 'Quantity');
-console.log(quantityTh);
+//console.log(quantityTh);
     // Get the index of that element with respect to its siblings (+1 because nodes are base 1 not base 0 like arrays)
     if ( typeof shipTh !== 'undefined' ) {
         var shipIndex = Array.from(shipTh.parentNode.children).indexOf(shipTh)+1;
@@ -315,7 +315,7 @@ console.log(quantityTh);
         var quantityIndex = Array.from(quantityTh.parentNode.children).indexOf(quantityTh)+1;
         var quantityColumn = quantityTh.closest('table').querySelectorAll(`td:nth-child(${quantityIndex})`);
     }
-    console.log(quantityColumn);
+    //console.log(quantityColumn);
     /* END define columns */
 function isGreaterThan1(){
     if (typeof quantityColumn !== 'undefined'){
@@ -375,8 +375,8 @@ function addClipboard(){
         var targetDiv   = $(zEvent.target).parent().siblings ("a");
         var textToCopy  = targetDiv.text ().trim ();
         //-- Feedback to user:
-        //$(".justCopied").removeClass ("justCopied");
-        //targetDiv.parent ().parent ().addClass ("justCopied");
+        $(".justCopied").removeClass ("justCopied");
+        targetDiv.parent ().parent ().addClass ("justCopied");
         printAsin(textToCopy, 1);
     } );
 };
@@ -410,6 +410,48 @@ function cptChecker(){
         };
     };
 };
+
+var padTime = document.createElement('input');
+var waaa = document.getElementById('shipment-list-highlight-delete-exception');
+var minsNode = document.createTextNode("minutes");
+var ptNode = document.createTextNode("PAD time: ");
+waaa.appendChild(ptNode)
+waaa.appendChild(padTime);
+waaa.appendChild(minsNode);
+padTime.style.textAlign = "center";
+padTime.style.width = "36px";
+padTime.maxLength=2;
+padTime.style.borderRadius ="20%";
+
+if (localStorage.padTime !== '' && localStorage.padTime > 0){
+    padTime.value = localStorage.padTime; //whatever is in storage will load into the text field
+};
+
+var d1=[];
+for(var i=0; i<dateColumn.length; i++){
+    d1[i] = new Date (dateColumn[i].innerText) //get time from column and use to calculate pad times
+    console.log(d1[i])
+}
+
+padTime.addEventListener('input', function updateValue(e){
+    localStorage.padTime = e.target.value;   //set storage to whatever is in the text field
+    if(padTime.value==""){
+        localStorage.padTime = 0;
+    }
+
+bla();
+});
+
+function bla(){
+    if ( typeof scanColumn !== 'undefined') {
+         for(var i=0; i<dateColumn.length; i++){
+             var tempDate = new Date ( d1[i] );
+             tempDate.setMinutes ( d1[i].getMinutes() - JSON.parse(localStorage.padTime));
+             //display the new PAD time in the column
+             dateColumn[i].innerText = `${tempDate.getFullYear()}-${tempDate.getMonth()+1}-${tempDate.getDate()} ${(tempDate.getHours()<10?'0':'')}${tempDate.getHours()}:${(tempDate.getMinutes()<10?'0':'')}${tempDate.getMinutes()}`;
+         }
+     }
+}
 
 if ( typeof conditionColumn !== 'undefined' ) {
     for(var k=0;k<conditionColumn.length;k++){
@@ -557,7 +599,7 @@ function toteChecker(){
 
 
             if (tote !== null) {
-                            console.log(`%c Tote: ${tote}`,'background-color:yellow;');
+                            //console.log(`%c Tote: ${tote}`,'background-color:yellow;');
             }else if (hptote !== null){
                 scanColumn[l].parentNode.style.backgroundColor = '#93ff93';
             }else if (pstote !== null || slamtote != null){
@@ -643,6 +685,7 @@ cptChecker();
 addClipboard();
 addConditions();
 toteChecker();
+bla();
 
 
 function outerScanTooltip(){
