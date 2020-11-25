@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.4
+// @version      1.4.6
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
@@ -37,18 +37,10 @@ Coding:
 
 //https://lindell.me/JsBarcode/#cdn
 setTimeout(popsMU, 500);
-if ( document.styleSheets[4]){
-console.log('stylesheet loaded!')
-}else{
-        console.log('stylesheet not loaded')
-    };
-
 function popsMU(){
-    //Change Tab name
-    document.getElementsByTagName('title')[0].innerText = `POPS`
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var user = document.getElementById('hcUsername').value                                      //the user that is signed in
+    var usr = document.getElementById('hcUsername').value                                       //the user that is signed in
     ,   theBarcode                                                                              //the barcode that has been generated and placed on screen
     ,   version = GM_info.script.version                                                        //this script's current version
     ,   backdrop = document.createElement('div')                                                //semi-transparent fill for when the settings appear
@@ -61,11 +53,18 @@ function popsMU(){
     ,   generated = document.styleSheets[4].cssRules[3].selectorText.slice(12,27)               //ex. _ngcontent-vpm-
     ,   colorSheet = document.styleSheets[4]                                                    //style sheet used for changing the colors of buttons
     ,   X = document.createElement('span')                                                      //to close the settings modal
-    ,   confirm = document.createElement('button')                                              //the settings 'apply' button
     ,   ovgPrefix                                                                               //for overage bins
     ,   sections                                                                                //for check-in chutes (letters of the walls)
     ,   chutePrefix                                                                             //prefix of the chute based on location (afe v. mezz)
+
+    //this will be for storing and displaying the history of scanned chutes
+    ,   list = []
+    ,   count = []
+    ,   historyTitle = document.createElement('h1');
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Change Tab name
+    document.getElementsByTagName('title')[0].innerText = `POPS MU v.${version}`
 
     //Variable classes/ids////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     gear.innerHTML = '&#9881;';                                                                 //gives the gear shape
@@ -103,6 +102,7 @@ function popsMU(){
             , instruction = document.getElementsByClassName('text-position text-style-instruction')[0].innerText;
         };
         //console.log(instruction)
+
         var newDiv = document.createElement('div')
         newDiv.id = 'newDiv'
         if(el){
@@ -110,7 +110,7 @@ function popsMU(){
             el.className='newElClass';
         };
 
-        var barcodeElement = document.createElement('img');
+        var barcodeElement = document.createElement('img'); //the img tag that will hold the scannable barcode
         barcodeElement.id = 'barcode';
 
         /********************************************************************************/
@@ -127,7 +127,7 @@ function popsMU(){
                 for(var j=0;4>j;j++){                                                         //creates the buttons 'Overage 1-4'
                     var btn = document.createElement('button');
                     btn.innerText = `Overage ${j+1}`;                                         //adds text 'Overage x' to each button where x is 1-4
-                    btn.className = 'btn btn-block btn-lg btn-custom';
+                    btn.className = 'btn btn-lg btn-custom ovg';
                     btn.setAttribute(`${custom}`,'');
                     btn.addEventListener("click", ovgBarcode);
                     newDiv.appendChild(btn);
@@ -319,9 +319,10 @@ function popsMU(){
             })
             newDiv.appendChild(barcodeElement);
             JsBarcode("#barcode",`tsAFE1pslv1`);
-            for(var i=0;i<18;i++){
+            //TODO: add variable for number of walls
+            for(i=0;i<18;i++){
                 let btn = document.createElement('button');
-                btn.innerText = [i+1];
+                btn.innerText = i+1;
                 btn.className = 'btn btn-block btn-lg btn-custom half';
                 btn.setAttribute(`${custom}`,'');
                 btn.addEventListener("click",wallBarcode);
@@ -381,10 +382,6 @@ function popsMU(){
 
     //https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36
 
-    //this will be for storing and displaying the history of scanned chutes
-    var list = []
-    ,   count = []
-    ,   historyTitle = document.createElement('h1');
 
 
     //Update history list
@@ -497,7 +494,7 @@ function popsMU(){
     }
     /*https://www.w3schools.com/howto/howto_js_rangeslider.asp*/
 
-    /****************************************************************************************************************************************************************
+/***************************************************************************************************************************************************************
 ***************************************************************************** SETTINGS *************************************************************************
 ****************************************************************************************************************************************************************/
     var defaultSettings = {
@@ -512,7 +509,6 @@ function popsMU(){
     ,settingsContent = document.createElement('div')
     ,version_container = document.createElement('span')
     ,colorDiv = document.createElement('div')
-    ,applyBtn = document.createElement('button')
     ,bgLink = document.createElement('input')
     ,imagePos = document.createElement('select')
     ,defOvg = document.createElement('select')
@@ -554,7 +550,7 @@ function popsMU(){
 
 
     settingsContent.appendChild(version_container);
-    if (user =='shockl'){
+    if (usr =='shockl'){
         version_container.innerText = `Version: ${version}
 ${notes}`
     }else{
@@ -564,6 +560,7 @@ ${notes}`
     /*SLIDERS*/
     /*Create each slider and label, add attribute, append*/
     for(var s=0; s<=2; s++){
+
         hueSlider[s] = document.createElement('input');
         satSlider[s] = document.createElement('input');
         lightSlider[s] = document.createElement('input');
@@ -679,8 +676,6 @@ ${notes}`
     pos[0].innerText = 'Center';
     pos[1].innerText = 'Top';
     pos[2].innerText = 'Cover';
-    applyBtn.innerText = 'Apply';
-    applyBtn.id = 'applySettings';
     resetDefault.innerText = 'Reset to Default';
     X.className = 'X';
 
@@ -691,10 +686,7 @@ ${notes}`
         bgLink.placeholder = 'Link to image';
     }
 
-
     imagePos.value = JSON.parse(localStorage.settings).position;    //the value of the position option is whatever is stored in settings
-
-
 
     //Attach everything to the DOM
     settingsContent.appendChild(X);              //add the closing X to the window
@@ -702,36 +694,59 @@ ${notes}`
 
     colorDiv.appendChild(label[3]); //background image
     colorDiv.appendChild(bgLink);   //link to background
-    colorDiv.appendChild(imagePos); //positioning of the BG
+    //colorDiv.appendChild(imagePos); //positioning of the BG
     colorDiv.appendChild(ovgDiv);   //container for the default overage selector
     colorDiv.appendChild(wallDiv);  //container for the default wall selector
 
-    /*insert default overage*/
+    /*insert default overage selector in settings menu*/
     label[4] = document.createElement('label');
     label[4].innerText = 'Default Overage Bin: ';
-    label[4].className = 'center';
     ovgDiv.appendChild(label[4]);
-    ovgDiv.appendChild(defOvg);
-    defOvg.addEventListener('input', set_defaults);
-    /*insert default wall*/
-    label[5] = document.createElement('label');
+    for(i=0;i<4;i++){
+        let ovgBtn = document.createElement('button');
+        ovgBtn.innerText = i+1;                             //sections is determinded by PS location
+        //ovgBtn.className = 'btn btn-block btn-lg btn-custom';
+        ovgBtn.setAttribute(`${custom}`,'');
+        ovgDiv.appendChild(ovgBtn);
+        //ovgBtn.addEventListener("click",chute_input)
+    }
+    label[4].className = 'center';
+
+
+    /*https://javascript.info/event-delegation*/
+
+
+let selectedBtn = ovgDiv.children[JSON.parse(localStorage.settings).def_overage];
+selectedBtn.classList.add("selected");
+
+ovgDiv.onclick = function(e) {
+    let btn = e.target;
+    settings.def_overage = btn.innerText;
+    localStorage.settings = JSON.stringify(settings); //the clicked button is saved to localStorage
+    if (btn.tagName != 'BUTTON') return; // not a button? Then we're not interested
+
+    highlight(e.target); // highlight it
+};
+
+function highlight(btn) {
+
+  if (selectedBtn) { // remove the existing highlight if any
+    selectedBtn.classList.remove("selected");
+  }
+  selectedBtn = btn;
+  selectedBtn.classList.add("selected"); // highlight the new li
+};
+
+
+
+    /*insert default wall selector in settings menu*/
+    /*label[5] = document.createElement('label');
     label[5].innerText = 'Default Wall: ';
-    label[5].className = 'center';
+        label[5].className = 'center';
     wallDiv.appendChild(label[5]);
     wallDiv.appendChild(defSec);
     defSec.addEventListener('input', set_defaults);
-    /*insert overage options */
-    for(i=0;i<4;i++){
-        var sec = document.createElement('option');
-        sec.innerText = i+1;
-        defOvg.appendChild(sec);
-    }
-    /*insert wall options*/
-    for(i=0;i<sections.length;i++){
-        sec = document.createElement('option');
-        sec.innerText = sections[i];
-        defSec.appendChild(sec);
-    }
+*/
     /*
 if(JSON.parse(localStorage.settings).def_overage == undefined){
     localStorage.settings.def_overage = defaultSettings.def_overage;
@@ -749,12 +764,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
         //console.log(JSON.parse(localStorage.settings).def_overage);
         //console.log(JSON.parse(localStorage.settings).def_section);
     }
-
-    settingsContent.appendChild(applyBtn);
     settingsContent.appendChild(resetDefault);
-
-
-
 
     backdrop.appendChild(settingsContent);
     function settingsModal() {
@@ -766,9 +776,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
             event.target == X) {
             backdrop.style.display = 'none';
             settingsContent.style.display = 'none';
-        } else if (event.target == applyBtn) {
-            applySettings();
-        } else if (event.target == resetDefault){
+        }else if (event.target == resetDefault){
             settings=defaultSettings;
             localStorage.settings = JSON.stringify(settings);
             thumbChange();
@@ -776,33 +784,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
         }
     }
 
-    function applySettings(){
-        settings.color0.h = hueSlider[0].value;
-        settings.color0.s = satSlider[0].value;
-        settings.color0.l = lightSlider[0].value;
-        settings.color0.a = alphaSlider[0].value;
-
-        settings.color1.h = hueSlider[1].value;
-        settings.color1.s = satSlider[1].value;
-        settings.color1.l = lightSlider[1].value;
-        settings.color1.a = alphaSlider[1].value;
-
-        settings.color2.h = hueSlider[2].value;
-        settings.color2.s = satSlider[2].value;
-        settings.color2.l = lightSlider[2].value;
-        settings.color2.a = alphaSlider[2].value;
-
-        settings.background = bgLink.value;
-        settings.position = imagePos.value;
-        localStorage.settings = JSON.stringify(settings);
-        applyColors();
-        //hide modal and settings
-        settingsContent.style.display = 'none';
-        backdrop.style.display = 'none';
-    }
-
-
-
+    
     function applyColors(){
         colorSheet.cssRules[3].style.backgroundColor= `hsla(${settings.color0.h},${settings.color0.s}%,${settings.color0.l}%,${settings.color0.a})`//main css - main color
         colorSheet.cssRules[5].style.backgroundColor=`hsla(${settings.color1.h},${settings.color1.s}%,${settings.color1.l}%,${settings.color1.a})`; // main css - hover color
@@ -811,10 +793,6 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
         navbar[12].style.backgroundColor=`hsla(${settings.color2.h},${settings.color2.s}%,${settings.color2.l}%,${settings.color2.a})`; //navbar - secondary color
         navbar[13].style.backgroundColor=`hsla(${settings.color2.h},${settings.color2.s}%,${settings.color2.l}%,${settings.color2.a})`; //navbar - secondary color
         historyTitle.style.backgroundColor=`hsla(${settings.color2.h},${settings.color2.s}%,${settings.color2.l}%,${settings.color2.a})`; //history - secondary color
-
-        body.style.background = `url(${JSON.parse(localStorage.settings).background})`
-        body.style.backgroundSize = `${JSON.parse(localStorage.settings).position}`;
-        body.style.backgroundAttachment = `fixed`;
     }
 
     applyColors();
@@ -1128,44 +1106,52 @@ perspective: 1000px;
 }
 
 @keyframes shake {
-10%, 90% {
-transform: translate3d(-1px, 0, 0);
-}
+ 10%, 90% {
+  transform: translate3d(-1px, 0, 0);
+ }
 
-20%, 80% {
-transform: translate3d(2px, 0, 0);
-}
+ 20%, 80% {
+  transform: translate3d(2px, 0, 0);
+ }
 
-30%, 50%, 70% {
-transform: translate3d(-4px, 0, 0);
-}
+ 30%, 50%, 70% {
+  transform: translate3d(-4px, 0, 0);
+ }
 
-40%, 60% {
-transform: translate3d(4px, 0, 0);
-}
+ 40%, 60% {
+  transform: translate3d(4px, 0, 0);
+ }
 }
 
 .newElClass{
-color: #7A7A7A;
-font-size: 30px;
-font-weight: bold;
-text-align: center;
-margin: auto;
-padding-top: 2%;
-padding-bottom: 2%;
+ color: #7A7A7A;
+ font-size: 30px;
+ font-weight: bold;
+ text-align: center;
+ margin: auto;
+ padding-top: 2%;
+ padding-bottom: 2%;
 }
 
 .unsideline{
-float:right;
+ float:right;
+}
+
+.ovg{
+ margin: 5px !important;
+}
+
+.selected{
+ /*color: #f90;*/
+ border: 2px outset #f90;
+ background-color: #f905;
 }
 `);
 
     bgLink.addEventListener('input',enterTheMatrix);
 
-
     function enterTheMatrix(){
-        if(/*(JSON.parse(localStorage.settings).background) == "matrix" ||*/
-            bgLink.value.toLowerCase() == "enter the matrix"){
+        if(bgLink.value.toLowerCase() == "enter the matrix"){
             console.log(`%cEnter the Matrix!`,
                         "color:#0f0;font-family:system-ui;font-size:4rem;-webkit-text-stroke: 1px black;font-weight:bold"
                        );
@@ -1198,6 +1184,11 @@ float:right;
             console.log(`Not the Matrix`);
             canvas.style.display='none';
         }
+        settings.background = bgLink.value;
+        localStorage.settings = JSON.stringify(settings);
+        body.style.background = `url(${JSON.parse(localStorage.settings).background})`
+        body.style.backgroundSize = `${JSON.parse(localStorage.settings).position}`;
+        body.style.backgroundAttachment = `fixed`;
     };
 
 
