@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.7
+// @version      1.5.8
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -596,10 +596,16 @@ function toteChecker(){
             var hptote = currentScan.match(/tsAFE1pslv1/);
             var slamtote = currentScan.match(/tspsAFESLAM\d{1}/); //ex: tspsAFESLAM1
             var csXP = currentScan.match(/csXP[a-zA-Z0-9]{7}/); //ex: csXP25cXxz5
+            var tspsGW = currentScan.match(/tspsGW[0-9]{2}/); //tspsGW23
+            var tspsKDP = currentScan.match(/tspsKDP[0-9]{2}/); //tspsGW23
 
 
             if (tote !== null) {
                             //console.log(`%c Tote: ${tote}`,'background-color:yellow;');
+            }else if (tspsGW !== null){
+                //do nothing
+            }else if (tspsKDP !== null){
+                //do nothing
             }else if (hptote !== null){
                 scanColumn[l].parentNode.style.backgroundColor = '#93ff93';
             }else if (pstote !== null || slamtote != null){
