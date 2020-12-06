@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.6
+// @version      1.4.10
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
@@ -298,40 +298,45 @@ function popsMU(){
             /********************************************************************************/
             /****************When checking-in from problem solve totes***********************/
             /********************************************************************************/
-        }else if(instruction === 'Scan Tote or Scan SP00' && areaId == 'psMAIN'){
-            var newInstructions = document.createElement('span');
-            newInstructions.innerHTML = '<h2> Scan a SP00 or select a number below to generate PS tote barcode</h2>';
-            newDiv.appendChild(newInstructions);
-
-            var x =document.getElementsByClassName('page-type-image')
-
-            for (var i = x.length-1; i >= 0; i--) {
-                x[i].remove();
-            }
+        }else if(instruction === 'Scan Tote or Scan SP00'){
 
             //insert text box that generates custom barcodes on the fly
             var customInput = document.createElement('input');
-            customInput.placeholder="Enter custom barcode";
+            customInput.placeholder="Paste tote ID or sp00";
             newDiv.appendChild(customInput);
             customInput.focus();
             customInput.addEventListener('input',function(e){
                 JsBarcode("#barcode",e.target.value)
             })
-            newDiv.appendChild(barcodeElement);
-            JsBarcode("#barcode",`tsAFE1pslv1`);
-            //TODO: add variable for number of walls
-            for(i=0;i<18;i++){
-                let btn = document.createElement('button');
-                btn.innerText = i+1;
-                btn.className = 'btn btn-block btn-lg btn-custom half';
-                btn.setAttribute(`${custom}`,'');
-                btn.addEventListener("click",wallBarcode);
-                newDiv.appendChild(btn);
+            var x =document.getElementsByClassName('page-type-image')
+
+            for (var i = x.length-1; i >= 0; i--) {
+                x[i].remove();
             }
-            function wallBarcode(){
-                removeButtons();
-                newDiv.appendChild(barcodeElement);
-                JsBarcode("#barcode",`tspsAFE${this.innerText}_01`);
+             newDiv.appendChild(barcodeElement);
+            if(areaId == 'psMAIN'){
+                var newInstructions = document.createElement('span');
+                newInstructions.innerHTML = '<h2> Scan a SP00 or select a number below to generate PS tote barcode</h2>';
+                newDiv.appendChild(newInstructions);
+
+
+                JsBarcode("#barcode",`tsAFE1pslv1`);
+
+
+                //TODO: add variable for number of walls
+                for(i=0;i<18;i++){
+                    let btn = document.createElement('button');
+                    btn.innerText = i+1;
+                    btn.className = 'btn btn-block btn-lg btn-custom half';
+                    btn.setAttribute(`${custom}`,'');
+                    btn.addEventListener("click",wallBarcode);
+                    newDiv.appendChild(btn);
+                }
+                function wallBarcode(){
+                    removeButtons();
+                    newDiv.appendChild(barcodeElement);
+                    JsBarcode("#barcode",`tspsAFE${this.innerText}_01`);
+                }
             }
             /********************************************************************************/
             /***********************When unsidelining a shipment*****************************/
