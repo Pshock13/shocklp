@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.8
+// @version      1.5.9
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -23,7 +23,7 @@
 * https://drive-render.corp.amazon.com/view/shocklp@/changelog.html
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
-
+/*PRINT ASIN BUTTON DISABLED*/
 
 
 GM_addStyle ( `
@@ -351,7 +351,7 @@ function addClipboard(){
             if(asinColumn[j].innerText==''){
                 /*Do nothing to an empty cell*/
             }else{
-                asinColumn[j].innerHTML+=("<div class='relative'><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/copy.png' width='20px' class='CopyBtn'><span class='tooltip tooltip--pos'>Copy ASIN</span><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/print.png' width='20px' class='printBtn'></div>");
+                asinColumn[j].innerHTML+=("<div class='relative'><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/copy.png' width='20px' class='CopyBtn'><span class='tooltip tooltip--pos'>Copy ASIN</span><!--<img src='https://drive-render.corp.amazon.com/view/shocklp@/media/print.png' width='20px' class='printBtn'>--></div>");
                 //asinColumn[j].innerHTML+=("<span class='CopyBtn'>&#128203;</span>");
             }
         };
