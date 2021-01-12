@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.10
+// @version      1.4.33
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
@@ -15,16 +15,31 @@
 // @require      https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js
 // @run-at       document-idle
 // ==/UserScript==
+/*
+You need to append several children ? Just make it plural with appendChildren !
+First things first :
+HTMLLIElement.prototype.appendChildren = function () {
 
+  for ( var i = 0 ; i < arguments.length ; i++ )
+
+    this.appendChild( arguments[ i ] );
+
+};
+Then for any list element :
+listElement.appendChildren( a, b, c, ... );
+//check :
+listElement.childNodes;//a, b, c, ...
+Works with every element that has the appendChild method of course ! Like HTMLDivElement.
+ */
 var notes =`
 Test:
+◼ testing the new blackslah as [enter] code
 ◼ does putting in a bigger number than chuteMax actually add the 'error' class to the input field?
 ☑ does selecting another overage beside the default remove the old ovg from history and add the new one?
 
 Create:
-◼ default chute letter. Have a chute automatically be chosen when checking in items, also have the other chute buttons underneath incase you need to use anotherwall
+◼ default chute letter. Have a chute automatically be chosen when checking in items, also have the other chute buttons underneath incase you need to use another wall
 ◼ get ALL buttons to change color
-◼ background positioning
 ◼ add themes
 ◼ holiday themes based on date
 
@@ -52,7 +67,7 @@ function popsMU(){
     ,   custom = document.styleSheets[4].cssRules[3].selectorText.slice(12,29)                  //ex. _ngcontent-vpm-14
     ,   generated = document.styleSheets[4].cssRules[3].selectorText.slice(12,27)               //ex. _ngcontent-vpm-
     ,   colorSheet = document.styleSheets[4]                                                    //style sheet used for changing the colors of buttons
-    ,   X = document.createElement('span')                                                      //to close the settings modal
+
     ,   ovgPrefix                                                                               //for overage bins
     ,   sections                                                                                //for check-in chutes (letters of the walls)
     ,   chutePrefix                                                                             //prefix of the chute based on location (afe v. mezz)
@@ -70,8 +85,6 @@ function popsMU(){
     gear.innerHTML = '&#9881;';                                                                 //gives the gear shape
     gear.classList.add('gear');                                                                 //adds a class to the gear for styles
     backdrop.className = 'backdrop';                                                            //adds a class to the backdrop for styles
-    X.className = 'X';                                                                          //adds a class to the 'X'' for styles
-    X.innerHTML = '&times;';                                                                    //gives the X shape
 
     body.appendChild(gear);                                                                     //add the gear to the body
     body.appendChild(backdrop);                                                                 //add the backdrop to the body
@@ -203,8 +216,8 @@ function popsMU(){
                     }
                 };*/
                     input.addEventListener('keypress', function submitWallNum(e){
-                        var key = e.which || e.keyCode;
-                        if (key === 92 && input.value > 0 && input.value <= chuteMax) {// 92 is \ 'backslash'
+                        var key = e.code ||  e.which || e.keyCode;
+                        if(/^(92|\\|Backslash)$/.test(key)  && input.value > 0 && input.value <= chuteMax){// 92 is \ 'backslash'
                             var chuteNum = input.value;
                             input.parentNode.replaceChild(barcodeElement, input);
                             JsBarcode("#barcode",`${chutePrefix}${wallNum}${sect}${chuteNum}`);
@@ -306,7 +319,7 @@ function popsMU(){
             newDiv.appendChild(customInput);
             customInput.focus();
             customInput.addEventListener('input',function(e){
-                JsBarcode("#barcode",e.target.value)
+                JsBarcode("#barcode",e.target.value.trim())
             })
             var x =document.getElementsByClassName('page-type-image')
 
@@ -327,7 +340,7 @@ function popsMU(){
                 for(i=0;i<18;i++){
                     let btn = document.createElement('button');
                     btn.innerText = i+1;
-                    btn.className = 'btn btn-block btn-lg btn-custom half';
+                    btn.className = 'btn btn-block btn-lg btn-custom thirds';
                     btn.setAttribute(`${custom}`,'');
                     btn.addEventListener("click",wallBarcode);
                     newDiv.appendChild(btn);
@@ -507,7 +520,7 @@ function popsMU(){
         color1:{h:34,s:84, l:50, a:1}, //orange
         color2:{h:210,s:100, l:13, a:1}, //gray
         background: '',
-        position: 'cover',
+        //position: 'cover',
         def_overage: 1,
         def_section: 'A',
     }
@@ -526,7 +539,6 @@ function popsMU(){
     ,satSlider = []
     ,lightSlider = []
     ,alphaSlider = []
-    ,pos = []
     ,settings;
 
 
@@ -555,12 +567,7 @@ function popsMU(){
 
 
     settingsContent.appendChild(version_container);
-    if (usr =='shockl'){
-        version_container.innerText = `Version: ${version}
-${notes}`
-    }else{
-        version_container.innerText = `Version: ${version}`
-    }
+    version_container.innerText = `Version: ${version}`
 
     /*SLIDERS*/
     /*Create each slider and label, add attribute, append*/
@@ -665,11 +672,6 @@ ${notes}`
     slideChange(); //run this one time on page load to set the slider backgrounds equal to stored values.
     /*END SLIDERS*/
 
-    for(var i=0;i<=2;i++){
-        pos[i] = document.createElement('option')        //creates an option for each background position
-        imagePos.appendChild(pos[i]);
-    }
-
     colorDiv.style.marginTop = '20px';
     colorDiv.className = 'colorDiv';
     label[0].innerText = 'Primary Color';
@@ -678,11 +680,7 @@ ${notes}`
     bgLink.type = 'text';
     label[3] = document.createElement('label');
     label[3].innerText = 'Background Image: ';
-    pos[0].innerText = 'Center';
-    pos[1].innerText = 'Top';
-    pos[2].innerText = 'Cover';
     resetDefault.innerText = 'Reset to Default';
-    X.className = 'X';
 
     //replaces the input placeholder with the link to the wallpaper (if there is one)
     if (JSON.parse(localStorage.settings).background != ''){
@@ -694,82 +692,90 @@ ${notes}`
     imagePos.value = JSON.parse(localStorage.settings).position;    //the value of the position option is whatever is stored in settings
 
     //Attach everything to the DOM
-    settingsContent.appendChild(X);              //add the closing X to the window
     settingsContent.appendChild(colorDiv);       //add the color slider container to the window
 
     colorDiv.appendChild(label[3]); //background image
     colorDiv.appendChild(bgLink);   //link to background
     //colorDiv.appendChild(imagePos); //positioning of the BG
     colorDiv.appendChild(ovgDiv);   //container for the default overage selector
-    colorDiv.appendChild(wallDiv);  //container for the default wall selector
+    colorDiv.appendChild(wallDiv); //container for the default wall selector
 
     /*insert default overage selector in settings menu*/
     label[4] = document.createElement('label');
-    label[4].innerText = 'Default Overage Bin: ';
+    label[4].innerText = 'Default Overage: ';
     ovgDiv.appendChild(label[4]);
     for(i=0;i<4;i++){
         let ovgBtn = document.createElement('button');
-        ovgBtn.innerText = i+1;                             //sections is determinded by PS location
+        ovgBtn.innerText = i+1;
         //ovgBtn.className = 'btn btn-block btn-lg btn-custom';
         ovgBtn.setAttribute(`${custom}`,'');
         ovgDiv.appendChild(ovgBtn);
-        //ovgBtn.addEventListener("click",chute_input)
     }
-    label[4].className = 'center';
+
+    /*insert default wall selector in settings menu*/
+    label[5] = document.createElement('label');
+    label[5].innerText = 'Default wall: ';
+    wallDiv.appendChild(label[5]);
+    for(var i=0;i<sections.length;i++){
+        let wallBtn = document.createElement('button');
+        wallBtn.innerText = sections[i]; //sections is determinded by PS location
+        //wallBtn.className = 'btn btn-block btn-lg btn-custom';
+        wallBtn.setAttribute(`${custom}`,'');
+        wallDiv.appendChild(wallBtn);
+    }
 
 
     /*https://javascript.info/event-delegation*/
 
-
-let selectedBtn = ovgDiv.children[JSON.parse(localStorage.settings).def_overage];
-selectedBtn.classList.add("selected");
+/*Highlighting the selected ovgerage button in settings */
+let selectedOvg = ovgDiv.children[JSON.parse(localStorage.settings).def_overage];
+selectedOvg.classList.add("selected");
 
 ovgDiv.onclick = function(e) {
-    let btn = e.target;
-    settings.def_overage = btn.innerText;
+    let ovgBtn = e.target;
+    settings.def_overage = ovgBtn.innerText;
     localStorage.settings = JSON.stringify(settings); //the clicked button is saved to localStorage
-    if (btn.tagName != 'BUTTON') return; // not a button? Then we're not interested
+    if (ovgBtn.tagName != 'BUTTON') return; // not a button? Then we're not interested
 
     highlight(e.target); // highlight it
 };
 
-function highlight(btn) {
+/*Highlighting the selected Wall button in settings */
+let temp = wallDiv.children/*[JSON.parse(localStorage.settings).def_section]*/;
 
-  if (selectedBtn) { // remove the existing highlight if any
-    selectedBtn.classList.remove("selected");
-  }
-  selectedBtn = btn;
-  selectedBtn.classList.add("selected"); // highlight the new li
+    for(i = 0; i<temp.length; i++){
+        if(temp[i].innerText == JSON.parse(localStorage.settings).def_section){
+            var selectedWall=wallDiv.children[i];
+        }
+    };
+selectedWall.classList.add("selected");
+
+wallDiv.onclick = function(e) {
+    let wallBtn = e.target;
+    settings.def_section = wallBtn.innerText;
+    localStorage.settings = JSON.stringify(settings); //the clicked button is saved to localStorage
+    if (wallBtn.tagName != 'BUTTON') return; // not a button? Then we're not interested
+
+    highlight2(e.target); // highlight it
 };
 
-
-
-    /*insert default wall selector in settings menu*/
-    /*label[5] = document.createElement('label');
-    label[5].innerText = 'Default Wall: ';
-        label[5].className = 'center';
-    wallDiv.appendChild(label[5]);
-    wallDiv.appendChild(defSec);
-    defSec.addEventListener('input', set_defaults);
-*/
-    /*
-if(JSON.parse(localStorage.settings).def_overage == undefined){
-    localStorage.settings.def_overage = defaultSettings.def_overage;
-    defOvg.value = JSON.parse(localStorage.settings).def_overage;
-}*/
-
-    defOvg.value = JSON.parse(localStorage.settings).def_overage;
-    defSec.value = JSON.parse(localStorage.settings).def_section;
-
-    function set_defaults(){
-        settings.def_overage = defOvg.value;
-        settings.def_section = defSec.value;
-
-        localStorage.settings = JSON.stringify(settings);
-        //console.log(JSON.parse(localStorage.settings).def_overage);
-        //console.log(JSON.parse(localStorage.settings).def_section);
+function highlight(btn) {
+  if (selectedOvg) { // remove the existing highlight if any
+    selectedOvg.classList.remove("selected");
+  }
+  selectedOvg = btn;
+  selectedOvg.classList.add("selected"); // highlight the new li
+};
+function highlight2(btn){
+    if (selectedWall) { // remove the existing highlight if any
+        selectedWall.classList.remove("selected");
     }
-    settingsContent.appendChild(resetDefault);
+    selectedWall = btn;
+    selectedWall.classList.add("selected"); // highlight the new li
+};
+
+   // settingsContent.appendChild(resetDefault);
+
 
     backdrop.appendChild(settingsContent);
     function settingsModal() {
@@ -777,8 +783,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
         settingsContent.style.display='block';
     }
     window.onclick = function(event) {
-        if (event.target == backdrop ||
-            event.target == X) {
+        if (event.target == backdrop) {
             backdrop.style.display = 'none';
             settingsContent.style.display = 'none';
         }else if (event.target == resetDefault){
@@ -789,7 +794,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
         }
     }
 
-    
+
     function applyColors(){
         colorSheet.cssRules[3].style.backgroundColor= `hsla(${settings.color0.h},${settings.color0.s}%,${settings.color0.l}%,${settings.color0.a})`//main css - main color
         colorSheet.cssRules[5].style.backgroundColor=`hsla(${settings.color1.h},${settings.color1.s}%,${settings.color1.l}%,${settings.color1.a})`; // main css - hover color
@@ -806,7 +811,7 @@ if(JSON.parse(localStorage.settings).def_overage == undefined){
     document.getElementsByTagName('topbar-component')[0].style.top = '0';
     document.getElementsByTagName('topbar-component')[0].style.zIndex = '100';
 
-    GM_addStyle (`
+GM_addStyle (`
 
 .sectionshadowNone{
 background:none;
@@ -939,131 +944,63 @@ border: 1px solid #888;
 width: 50%;
 }
 
-/* The X Button */
-.X {
-color: rgba(255, 0, 0, 1);;
-float: right;
-font-size: 28px;
-font-weight: bold;
-}
-.X:hover,
-.X:focus {
-color: #000;
-text-decoration: none;
-cursor: pointer;
-}
-
 #title{
--moz-user-select: none;
-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 .popup{
-position: absolute;
-margin: 10px 10px;
-padding: 10px;
-left: 0;
-width:400px;
-background-color: white;
-color: black;
-border-radius: 5px;
-display: none;
-box-shadow: 1px 1px 5px #000;
-z-index: 100;
+    position: absolute;
+    margin: 10px 10px;
+    padding: 10px;
+    left: 0;
+    width:400px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    display: none;
+    box-shadow: 1px 1px 5px #000;
+    z-index: 100;
 }
 #qMark {
-font-size: 20px;
-float: right;
--moz-user-select: none;
-user-select: none;
+    font-size: 20px;
+    float: right;
+    -moz-user-select: none;
+    user-select: none;
 }
 #qMark:hover {
-cursor: help;
+    cursor: help;
 }
 #qMark:hover + .popup{
-display: block;
+    display: block;
 }
 #trash:hover{
-color: #f00;
-cursor: pointer;
+    color: #f00;
+    cursor: pointer;
 }
-.half{
-width:30%;
-display: inline;
-margin: 10px !important;
-padding:0 !important;
+.thirds{
+    width:30%;
+    display: inline;
+    margin: 10px !important;
+    padding:0 !important;
 }
 
 .gear{
-position: absolute;
-left: 2px;
-top: 2px;
-z-index: 101;
-font-size: 30px;
-color: #fff;
-text-shadow: black -1px 1px 0px, black 1px 1px 0px, black -1px -1px 0px, black 1px -1px 0px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    z-index: 101;
+    font-size: 30px;
+    color: #fff;
+    text-shadow: black -1px 1px 0px, black 1px 1px 0px, black -1px -1px 0px, black 1px -1px 0px;
 }
 
 .gear:hover{
-cursor: pointer;
-}
-
-/* Location Switch */
-#location{
-height: 0;
-width: 0;
-display: none;
-visibility: hidden;
-}
-
-#locLabel {
-z-index: 1000;
-cursor: pointer;
-text-indent: 30px;
-width: 100px;
-height: 25px;
-background: #000;
-border-radius: 100px;
-position: relative;
-display: inline-block;
--moz-user-select: none;
-user-select: none;
-}
-
-#locLabel::after {
-content: '';
-z-index: 999;
-position: absolute;
-top: 2px;
-left: 2px;
-width: 20px;
-height: 20px;
-background: #999;
-border-radius: 100px;
-transition: 0.3s;
-}
-
-#location:checked + #locLabel {
-background: #fff;
-}
-
-#location:checked + #locLabel::after {
-left: calc(100% - 2.5px);
-transform: translateX(-100%);
-}
-
-#location:active:after {
-width: 400px;
-}
-
-#locDiv{
-display: flex;
-justify-content: center;
-align-items: center;
+    cursor: pointer;
 }
 
 .settings-content input[type='color']:hover,
 .settings-content input[type='color']+label:hover{
-cursor: pointer;
+    cursor: pointer;
 }
 
 .center{
@@ -1071,43 +1008,43 @@ text-align: center;
 }
 
 input[type="range"]{
-width: 100%;
-border: 1px solid #000;
--webkit-appearance: none;
-height: 10px;
--moz-appearance: none;
-border-radius: 10px;
-margin: 2px;
+    width: 100%;
+    border: 1px solid #000;
+    -webkit-appearance: none;
+    height: 10px;
+    -moz-appearance: none;
+    border-radius: 10px;
+    margin: 2px;
 }
 
 input[type="range"]::-moz-range-thumb {
--moz-appearance: none;
-border-radius: 100%;
-background-color: transparent;
-box-shadow: inset 0px 0px 0px 2px #ccc;
-height: 15px;
-width: 15px;
-vertical-align: middle;
-border: none;
-cursor: pointer;
+    -moz-appearance: none;
+    border-radius: 100%;
+    background-color: transparent;
+    box-shadow: inset 0px 0px 0px 2px #ccc;
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    border: none;
+    cursor: pointer;
 }
 
 input[type="range"]::-moz-range-track {
-height: 0px;
+    height: 0px;
 }
 
 .colorDiv {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 
 .error {
-animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-transform: translate3d(0, 0, 0);
-backface-visibility: hidden;
-box-shadow: 5px 5px 5px red, -5px -5px 5px red, -5px 5px 5px red, 5px -5px 5px red;
-perspective: 1000px;
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    box-shadow: 5px 5px 5px red, -5px -5px 5px red, -5px 5px 5px red, 5px -5px 5px red;
+    perspective: 1000px;
 }
 
 @keyframes shake {
@@ -1146,10 +1083,15 @@ perspective: 1000px;
  margin: 5px !important;
 }
 
+/*Which button is selected for default in settings*/
 .selected{
  /*color: #f90;*/
  border: 2px outset #f90;
  background-color: #f905;
+}
+
+.navbar{
+    border:none !important
 }
 `);
 
@@ -1161,7 +1103,8 @@ perspective: 1000px;
                         "color:#0f0;font-family:system-ui;font-size:4rem;-webkit-text-stroke: 1px black;font-weight:bold"
                        );
             canvas.style.display='block';
-            /*var matrixSpeed = document.createElement('input'),
+/*
+            var matrixSpeed = document.createElement('input'),
             matrixSize = document.createElement('input'),
             matrixColor = document.createElement('input'),
             matrixBackground = document.createElement('input');
@@ -1183,7 +1126,7 @@ perspective: 1000px;
         matrixSpeed.insertAdjacentElement('afterend', matrixColor);
         matrixSpeed.insertAdjacentElement('afterend', matrixBackground);*/
 
-            var timing = setInterval( draw, time );
+           var timing = setInterval( draw, time );
         }else if(bgLink.value.toLowerCase() !== "enter the matrix"){
             console.clear();
             console.log(`Not the Matrix`);
@@ -1244,6 +1187,7 @@ perspective: 1000px;
     //drawing the characters
     var n=0;
     function draw(){
+        glitch();
         hue=`hsla(${n++},100%, 50%,1)`;
         //Black BG for the canvas
         //translucent BG to show trail
@@ -1288,25 +1232,24 @@ perspective: 1000px;
                 drop[i]++;
             }
         }
-        if(Math.random()>0){
-            glitch();
-        }
     }
     function glitch(){
-        ctx.font = `bold ${size}px arial`; //set size and font
-        //grab random coordinates
-        var glitchX = Math.floor( Math.random() * table.length ),
-            glitchY = Math.floor( Math.random() * table[0].length );
-        //erase current character
-        ctx.fillStyle=bgColor;
-        ctx.fillText(table[glitchX][glitchY], glitchX*size, glitchY*size); //used to 'erase' letters as a drop comes down on them
-        //replace table with random character
-        table[glitchX][glitchY]= matrix[ Math.floor( Math.random() * matrix.length ) ];
+        if(Math.random()<0.3){
+            ctx.font = `bold ${size}px arial`; //set size and font
+            //grab random coordinates
+            var glitchX = Math.floor( Math.random() * table.length ),
+                glitchY = Math.floor( Math.random() * table[0].length );
+            //erase current character
+            ctx.fillStyle=bgColor;
+            ctx.fillText(table[glitchX][glitchY], glitchX*size, glitchY*size); //used to 'erase' letters as a drop comes down on them
+            //replace table with random character
+            table[glitchX][glitchY]= matrix[ Math.floor( Math.random() * matrix.length ) ];
 
-        ctx.font = size + "px arial"; //set size and font
-        //print that character over the same location
-        ctx.fillStyle=hue;
-        ctx.fillText(table[glitchX][glitchY], glitchX*size, glitchY*size);
+            ctx.font = size + "px arial"; //set size and font
+            //print that character over the same location
+            ctx.fillStyle=hue;
+            ctx.fillText(table[glitchX][glitchY], glitchX*size, glitchY*size);
+        }
     }
 
 
