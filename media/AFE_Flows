@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-01-12T04:15:10.034Z" agent="5.0 (Windows)" etag="qEDOY9NRuBnsg-yPEqAB" version="14.1.8" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-01-12T07:22:07.641Z" agent="5.0 (Windows)" etag="jSLC0FieI0VNJOQM7BcO" version="14.1.8" type="github" pages="3">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="AFE Rebin Flow">
-    <mxGraphModel dx="1570" dy="988" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="1">
+    <mxGraphModel dx="1884" dy="1186" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="1">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -316,13 +316,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="DAeN8tupOcgVGGsnFY_N-2" value="" style="edgeStyle=elbowEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="DAeN8tupOcgVGGsnFY_N-0">
+        <mxCell id="DAeN8tupOcgVGGsnFY_N-2" value="" style="edgeStyle=elbowEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="DAeN8tupOcgVGGsnFY_N-10">
           <mxGeometry relative="1" as="geometry">
+            <mxPoint x="939" y="187" as="sourcePoint" />
             <mxPoint x="938.9999999999998" y="273.6" as="targetPoint" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="DAeN8tupOcgVGGsnFY_N-0" value="&lt;font style=&quot;font-size: 20px&quot;&gt;JAM!&lt;/font&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;labelBackgroundColor=#FFCCCC;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="879" y="127" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="DAeN8tupOcgVGGsnFY_N-6" value="" style="edgeStyle=elbowEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="DAeN8tupOcgVGGsnFY_N-4" target="DAeN8tupOcgVGGsnFY_N-5">
           <mxGeometry relative="1" as="geometry" />
@@ -338,6 +336,9 @@
         </mxCell>
         <mxCell id="DAeN8tupOcgVGGsnFY_N-7" value="Once everything is clear, press the jam clear button near the andon switch and resume rebining" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;strokeWidth=1;glass=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="849" y="561.8" width="180" height="85.2" as="geometry" />
+        </mxCell>
+        <mxCell id="DAeN8tupOcgVGGsnFY_N-10" value="&lt;div style=&quot;font-size: 20px&quot;&gt;JAM!&lt;/div&gt;&lt;div style=&quot;font-size: 11px&quot;&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;(Orange light flashing)&lt;/font&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="870" y="130" width="138" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
