@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.9
+// @version      1.5.12
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -174,6 +174,9 @@ color:#0113DA;
 @keyframes blink1 {
     50% { background-color: #10b7ff;color:#fff}
   }
+.hardCapped{
+ background-color:#ff443366;
+}
 /*Pushes quicklinks right to make room for clipboard*/
 .filterable.check .filter-link,
 .non-filterable.check .filter-link{
@@ -277,6 +280,7 @@ document.querySelectorAll('table a[href*="container-display.html?container="]')
 
     /* Define columns that will be used */
     var allTh = document.querySelectorAll('th');
+console.log(allTh);
 
     var shipTh      = Array.from(allTh).find(th => th.innerText === 'Shipment ID' || th.innerText === 'Transfer Request ID');
     var scanTh      = Array.from(allTh).find(th => th.innerText === 'Scannable ID');
@@ -285,7 +289,9 @@ document.querySelectorAll('table a[href*="container-display.html?container="]')
     var asinTh      = Array.from(allTh).find(th => th.innerText === 'FN SKU');
     var outerTh     = Array.from(allTh).find(th => th.innerText === 'Outer Scannable ID');
     var quantityTh    = Array.from(allTh).find(th => th.innerText === 'Quantity');
-//console.log(quantityTh);
+    var pickBatchTh    = Array.from(allTh).find(th => th.innerText === 'Pick Batch ID');
+    var workPoolTh    = Array.from(allTh).find(th => th.innerText === 'Work Pool');
+//console.log(pickBatchTh);
     // Get the index of that element with respect to its siblings (+1 because nodes are base 1 not base 0 like arrays)
     if ( typeof shipTh !== 'undefined' ) {
         var shipIndex = Array.from(shipTh.parentNode.children).indexOf(shipTh)+1;
@@ -315,18 +321,30 @@ document.querySelectorAll('table a[href*="container-display.html?container="]')
         var quantityIndex = Array.from(quantityTh.parentNode.children).indexOf(quantityTh)+1;
         var quantityColumn = quantityTh.closest('table').querySelectorAll(`td:nth-child(${quantityIndex})`);
     }
-    //console.log(quantityColumn);
+    if (typeof pickBatchTh !== 'undefined'){
+        var pickBatchIndex = Array.from(pickBatchTh.parentNode.children).indexOf(pickBatchTh)+1;
+        var pickBatchColumn = pickBatchTh.closest('table').querySelectorAll(`td:nth-child(${pickBatchIndex})`);
+    }
+    if (typeof workPoolTh !== 'undefined'){
+        var workPoolIndex = Array.from(workPoolTh.parentNode.children).indexOf(workPoolTh)+1;
+        var workPoolColumn = workPoolTh.closest('table').querySelectorAll(`td:nth-child(${workPoolIndex})`);
+    }
+    //console.log(pickBatchColumn);
     /* END define columns */
-function isGreaterThan1(){
-    if (typeof quantityColumn !== 'undefined'){
-        for(var j=0;j<quantityColumn.length;j++){
-            if (quantityColumn[j].innerText !== '1'){
-                quantityColumn[j].classList.add('moreThan1');
-            };
+if (typeof quantityColumn !== 'undefined'){
+    for(var j=0;j<quantityColumn.length;j++){
+        if (quantityColumn[j].innerText !== '1'){
+            quantityColumn[j].classList.add('moreThan1');
         };
     };
 };
-isGreaterThan1()
+if(typeof workPoolColumn !=='undefined'){
+    for(j=0;j<workPoolColumn.length;j++){
+        if(workPoolColumn[j].innerText == 'PickingNotYetPickedHardCapped'){
+            workPoolColumn[j].parentNode.classList.add('hardCapped');
+        }
+    }
+};
 function addClipboard(){
     if ( typeof shipColumn !== 'undefined') {
         for(var j=0;j<shipColumn.length;j++){
@@ -351,7 +369,7 @@ function addClipboard(){
             if(asinColumn[j].innerText==''){
                 /*Do nothing to an empty cell*/
             }else{
-                asinColumn[j].innerHTML+=("<div class='relative'><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/copy.png' width='20px' class='CopyBtn'><span class='tooltip tooltip--pos'>Copy ASIN</span><!--<img src='https://drive-render.corp.amazon.com/view/shocklp@/media/print.png' width='20px' class='printBtn'>--></div>");
+                asinColumn[j].innerHTML+=("<div class='relative'><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/copy.png' width='20px' class='CopyBtn'><span class='tooltip tooltip--pos'>Copy ASIN</span><img src='https://drive-render.corp.amazon.com/view/shocklp@/media/print.png' width='20px' class='printBtn'></div>");
                 //asinColumn[j].innerHTML+=("<span class='CopyBtn'>&#128203;</span>");
             }
         };
