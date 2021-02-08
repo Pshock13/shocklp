@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         POPS Master User
 // @namespace    com.amazon.shocklp
-// @version      1.4.33
+// @version      1.4.36
 // @description  Adds functions to the POPS UI
 // @author       Phillip Shockley | shocklp
 // @match        http://aft-pops-iad.aka.amazon.com/*
@@ -106,6 +106,7 @@ function popsMU(){
             sections = ['A'];
             chutePrefix = 'chPSGWW0';
     }
+    
     /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
     setInterval(function addBarcode(){
@@ -402,7 +403,7 @@ function popsMU(){
 
 
 
-    //Update history list
+    //Update History List
     /************************************************************************************************************************************************************************ */
     function addToHistory(){
         if(localStorage.History) {list = JSON.parse(localStorage.History);} //turn localStorage into arrays
@@ -532,6 +533,7 @@ function popsMU(){
     ,defOvg = document.createElement('select')
     ,defSec = document.createElement('select')
     ,resetDefault = document.createElement('button')
+    ,sectionDiv = document.createElement('div')
     ,ovgDiv = document.createElement('div')
     ,wallDiv = document.createElement('div')
     ,label = []
@@ -557,6 +559,11 @@ function popsMU(){
             localStorage.settings=JSON.stringify(settings);                               //and save setting into localStorage
         }
     });
+
+    /*if(localStorage.sections != null){
+        
+        sections = JSON.parse(localStorage.sections)
+    }*/
     /***********************************************************************************************************************************************************************************/
 
 
@@ -689,7 +696,7 @@ function popsMU(){
         bgLink.placeholder = 'Link to image';
     }
 
-    imagePos.value = JSON.parse(localStorage.settings).position;    //the value of the position option is whatever is stored in settings
+    //imagePos.value = JSON.parse(localStorage.settings).position;    //the value of the position option is whatever is stored in settings
 
     //Attach everything to the DOM
     settingsContent.appendChild(colorDiv);       //add the color slider container to the window
@@ -697,6 +704,7 @@ function popsMU(){
     colorDiv.appendChild(label[3]); //background image
     colorDiv.appendChild(bgLink);   //link to background
     //colorDiv.appendChild(imagePos); //positioning of the BG
+    //colorDiv.appendChild(sectionDiv); //container for defining wall sections
     colorDiv.appendChild(ovgDiv);   //container for the default overage selector
     colorDiv.appendChild(wallDiv); //container for the default wall selector
 
@@ -724,6 +732,13 @@ function popsMU(){
         wallDiv.appendChild(wallBtn);
     }
 
+    /*Insert define wall section in settings menu */
+    label[6] = document.createElement('label');
+    label[6].innerText = 'Define Walls: ';
+    var sectionText = document.createElement('input');
+    sectionText.placeholder = 'Ex: "ABCDE"';
+    sectionDiv.appendChild(label[6]);
+    sectionDiv.appendChild(sectionText);
 
     /*https://javascript.info/event-delegation*/
 
@@ -732,7 +747,7 @@ let selectedOvg = ovgDiv.children[JSON.parse(localStorage.settings).def_overage]
 selectedOvg.classList.add("selected");
 
 ovgDiv.onclick = function(e) {
-    let ovgBtn = e.target;
+    let ovgBtn = e.target.closest('button');
     settings.def_overage = ovgBtn.innerText;
     localStorage.settings = JSON.stringify(settings); //the clicked button is saved to localStorage
     if (ovgBtn.tagName != 'BUTTON') return; // not a button? Then we're not interested
@@ -751,7 +766,7 @@ let temp = wallDiv.children/*[JSON.parse(localStorage.settings).def_section]*/;
 selectedWall.classList.add("selected");
 
 wallDiv.onclick = function(e) {
-    let wallBtn = e.target;
+    let wallBtn = e.target.closest('button');
     settings.def_section = wallBtn.innerText;
     localStorage.settings = JSON.stringify(settings); //the clicked button is saved to localStorage
     if (wallBtn.tagName != 'BUTTON') return; // not a button? Then we're not interested
