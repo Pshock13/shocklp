@@ -55,7 +55,8 @@ var links = [
     {href:"Script_install.html",text:"Script Install"},
     {href:"new_rule.html",text:"Declutter Outlook"},
     {href:"atrops_ticket.html",text:"How to: ATROPS Ticket"},
-    {href:"helpful_tools.html",text:"Helpful Tools"}
+    {href:"helpful_tools.html",text:"Helpful Tools"},
+    {href:"afe_workflows.html",text:"AFE Workflows"}
 ];
 
 nav.prepend(navUl);

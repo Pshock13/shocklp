@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<title>AFE Work Flows</title>
+	<meta name="author" content="Phillip Shockley/shocklp">
+	<meta name="owner" content="Phillip Shockley/shocklp">
+	<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+<body id="top">
+<div id="articleContent">
+	<h1 class="title">AFE Work Flows</h1>
+	<h6 class="byline">By: Phillip Shockley [shocklp]</h6>
+	<table class="toc">
+		<tbody>
+			<tr>
+				<td>
+					<img class="amzn" src="media/Amazon.png"/>
+					<div class="accordion">Contents</div>
+					<div class="panel">
+						<ul>
+							<li>Pack</li>
+							<li>Rebin</li>
+							<li>Induct</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<h1 class="tape">
+        <span>Under Construction</span>
+    </h1>
+	<dl id="items">
+		<dt>Pack</dt>
+		<dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod natus animi corporis non ad, nobis fugit ab nihil corrupti, amet qui eveniet blanditiis vel aspernatur dolorum quasi alias, soluta nam.</dd>
+		<img src="media/AFE_Flows-Pack.png" alt="">
+		<dt>Rebin</dt>
+		<dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt voluptatem alias esse ut at, beatae repudiandae, asperiores ad consectetur mollitia quod placeat suscipit numquam quaerat commodi laborum nihil! Quod, commodi!</dd>
+		<img src="media/AFE_Flows-Rebin.png" alt="">
+        <dt>Induct</dt>
+		<dd>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum maiores laudantium ex recusandae eum dolores mollitia labore, quae deserunt omnis necessitatibus natus vel nemo dicta, iure corrupti distinctio veritatis. Deleniti.</dd>
+		<img src="media/AFE_Flows-Induct.png" alt="">
+    </dl>
+</div>
+</body>
+<script type="text/javascript" src="main.js"></script>
+<script>
+document.getElementById('items').addEventListener('click', function(e){
+	switch(e.target && e.target.innerText){
+		case 'Sleuth':
+            window.open(`https://mastermind.amazon.com/sleuth/`, "_self")
+			break;
+		case 'Flow Sortation Workforce':
+            window.open(`https://flow-sortation-na.amazon.com/${FC}/#/afe/workforce`, "_self")
+			break;
+		case 'Dr. SKU':
+            window.open(`https://dr-sku-iad.amazon.com`, "_self")
+			break;
+	}
+	
+})
+</script>
+<style>
+	dl img{
+		border:1px solid #000;
+		width:100%;
+		box-shadow: 2px 2px 5px #146eb4;
+	}
+	dl dt{
+		cursor: pointer;
+		text-decoration: underline;
+		color: rgb(255, 123, 0);
+	}
+	dl *{
+		margin:10px 0;
+	}
+</style>
+</html>
