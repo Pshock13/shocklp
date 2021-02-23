@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-23T13:06:18.437Z" agent="5.0 (Windows)" etag="KIpWfG6T9SGTBqWNgyGy" version="14.4.2" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2021-02-23T13:12:00.424Z" agent="5.0 (Windows)" etag="rG1QUOqNIU5SZdJJJEYS" version="14.4.2" type="github" pages="4">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Rebin">
     <mxGraphModel dx="1422" dy="773" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="1">
       <root>
@@ -1382,7 +1382,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="kM78H-opndEfBhwQEWfq" name="Tote Routing">
-    <mxGraphModel dx="2042" dy="1443" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="2522" dy="1623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="bBctHyPDNrkteHmQ8avN-0" />
         <mxCell id="bBctHyPDNrkteHmQ8avN-1" parent="bBctHyPDNrkteHmQ8avN-0" />
@@ -1442,7 +1442,7 @@
         </mxCell>
         <UserObject label="&lt;div&gt;Last Updated: %date{ddd mmm dd yyyy}%&lt;/div&gt;" placeholders="1" id="bBctHyPDNrkteHmQ8avN-26">
           <mxCell style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;overflow=hidden;strokeWidth=2;" parent="bBctHyPDNrkteHmQ8avN-1" vertex="1">
-            <mxGeometry x="-660" y="-580" width="220" height="20" as="geometry" />
+            <mxGeometry x="-660" y="-585" width="220" height="20" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="aMPPohlB766MLACz6beo-10" value="&lt;div align=&quot;left&quot;&gt;This contains any items (non aerosol) that are sellable and can be re-stowed to the mods&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;strokeWidth=2;fontSize=13;align=left;" parent="bBctHyPDNrkteHmQ8avN-1" vertex="1">
@@ -1459,6 +1459,9 @@
         </mxCell>
         <mxCell id="aMPPohlB766MLACz6beo-14" value="&lt;div&gt;Leaking Items&lt;/div&gt;&lt;div&gt;(Bagged)&lt;br&gt;&lt;/div&gt;" style="shape=cube;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;darkOpacity=0.05;darkOpacity2=0.1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" parent="bBctHyPDNrkteHmQ8avN-1" vertex="1">
           <mxGeometry x="-170" y="-330" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="rXQt1zpzUOlQUGLtg8VI-1" value="pshock13.github.io/shocklp/media/AFE_Flows-Tote Routing.png" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="bBctHyPDNrkteHmQ8avN-1">
+          <mxGeometry x="-755" y="-565" width="370" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
