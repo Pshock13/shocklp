@@ -18,8 +18,9 @@
 					<div class="accordion">Contents</div>
 					<div class="panel">
 						<ul>
+							<li>Tote Routing</li>
 							<li>Sleuth</li>
-							<li>Flow Sortation Workforce</li>
+							<!--<li>Flow Sortation Workforce</li>-->
 							<li>Dr. Sku</li>
 						</ul>
 					</div>
@@ -31,6 +32,9 @@
         <span>Under Construction</span>
     </h1>
 	<dl id="items">
+		<dt>Tote Routing</dt>
+		<dd>Totes need to be routed before being placed back on the line.</dd>
+		<img src="media/AFE_Flows-Tote Routing.png" alt="">
 		<dt>Sleuth</dt>
 		<dd>This tool comes in handy when you have a kickout that "cannot find shipment data" either because of a missed sp00 or the wrong sp00 on the box.<br>
 		Scan the items in the box/container and Sleuth with attempt to find the common container that those items share. (Will not work for multiple of the same item. Requires at least 2 unique ASINs)</dd>
@@ -68,6 +72,7 @@ document.getElementById('items').addEventListener('click', function(e){
 		box-shadow: 2px 2px 5px #146eb4;
 	}
 	dl dt{
+		text-align: center;
 		cursor: pointer;
 		text-decoration: underline;
 		color: rgb(255, 123, 0);
