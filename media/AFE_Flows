@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-02-23T13:12:00.424Z" agent="5.0 (Windows)" etag="rG1QUOqNIU5SZdJJJEYS" version="14.4.2" type="github" pages="4">
+<mxfile host="app.diagrams.net" modified="2021-02-24T08:33:40.558Z" agent="5.0 (Windows)" etag="NrRdtOjxQ7eySGFxVObN" version="14.4.2" type="github" pages="4">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Rebin">
-    <mxGraphModel dx="1422" dy="773" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="1">
+    <mxGraphModel dx="942" dy="593" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="1">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -514,14 +514,14 @@
             <mxPoint x="291.97" y="697.75" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="2yBmgkgiMihgMBEea-ak-0" value="&lt;div align=&quot;center&quot;&gt;pshock13.github.io/shocklp/media/AFE_Flows-Rebin.png&lt;/div&gt;" style="text;html=1;align=center;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="2yBmgkgiMihgMBEea-ak-0" value="&lt;div align=&quot;center&quot;&gt;pshock13.github.io/shocklp/media/AFE_Flows-Rebin.png&lt;/div&gt;" style="text;html=1;align=center;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="347" y="100" width="324" height="18" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="JBd2SefULozkRW_0l8Uq" name="Induct">
-    <mxGraphModel dx="1422" dy="773" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="1">
+    <mxGraphModel dx="942" dy="593" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="1">
       <root>
         <mxCell id="q3Mt1JDZHqGsEwrw4h4c-0" />
         <mxCell id="q3Mt1JDZHqGsEwrw4h4c-1" parent="q3Mt1JDZHqGsEwrw4h4c-0" />
@@ -1033,17 +1033,17 @@
         <mxCell id="La_yfg-8UL_K7Kzxcque-0" value="&lt;font style=&quot;font-size: 52px&quot; face=&quot;Georgia&quot;&gt;AFE Induct Flow&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;" parent="q3Mt1JDZHqGsEwrw4h4c-1" vertex="1">
           <mxGeometry x="470" y="41" width="530" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="pMkiTB0owO962YRS5WpZ-0" value="&lt;div style=&quot;font-size: 16px&quot; align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;If an item in a tote is leaking, pull that tote off the line and raise an andon. We do not want liquids trailing through the sort room.&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 16px&quot; face=&quot;Georgia&quot;&gt;If an item should fall onto the conveyor, you should hit the red stop button and then retrieve the item before starting the conveyors back up.&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeWidth=2;" parent="q3Mt1JDZHqGsEwrw4h4c-1" vertex="1">
-          <mxGeometry x="456" y="529" width="621" height="293" as="geometry" />
-        </mxCell>
-        <mxCell id="QYQo98rjon--j8R3tooJ-0" value="&lt;div align=&quot;center&quot;&gt;pshock13.github.io/shocklp/media/AFE_Flows-Induct.png&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="q3Mt1JDZHqGsEwrw4h4c-1">
+        <mxCell id="QYQo98rjon--j8R3tooJ-0" value="&lt;div align=&quot;center&quot;&gt;pshock13.github.io/shocklp/media/AFE_Flows-Induct.png&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="q3Mt1JDZHqGsEwrw4h4c-1" vertex="1">
           <mxGeometry x="588" y="94" width="324" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="EvnwwcU2KWO3Sc1-KTaU-0" value="&lt;div style=&quot;font-size: 16px&quot; align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;If an item in a tote is leaking, pull that tote off the line and raise an andon. We do not want liquids trailing through the sort room.&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 16px&quot; face=&quot;Georgia&quot;&gt;If an item should fall onto the conveyor, you should hit the red stop button and then retrieve the item before starting the conveyors back up.&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;align=left;size=0.04869565217391304;strokeColor=#b85450;fillColor=none;glass=0;" vertex="1" parent="q3Mt1JDZHqGsEwrw4h4c-1">
+          <mxGeometry x="514" y="570" width="533" height="223" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="NMJ-zd9tY4qu9U4iFDpc" name="Pack">
-    <mxGraphModel dx="1422" dy="773" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="1">
+    <mxGraphModel dx="942" dy="593" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="1">
       <root>
         <mxCell id="oBgYVV3uqasPhyjAJSzk-0" />
         <mxCell id="oBgYVV3uqasPhyjAJSzk-1" parent="oBgYVV3uqasPhyjAJSzk-0" />
@@ -1145,7 +1145,7 @@
             <mxPoint x="620" y="352" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="oBgYVV3uqasPhyjAJSzk-29" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" parent="oBgYVV3uqasPhyjAJSzk-1" source="oBgYVV3uqasPhyjAJSzk-31" target="oBgYVV3uqasPhyjAJSzk-35" edge="1">
+        <mxCell id="oBgYVV3uqasPhyjAJSzk-29" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;fillColor=#f8cecc;strokeColor=#b85450;" parent="oBgYVV3uqasPhyjAJSzk-1" source="1GgHCs6hm_lFNXkqlS00-0" target="oBgYVV3uqasPhyjAJSzk-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="oBgYVV3uqasPhyjAJSzk-30" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" parent="oBgYVV3uqasPhyjAJSzk-1" source="oBgYVV3uqasPhyjAJSzk-37" target="oBgYVV3uqasPhyjAJSzk-36" edge="1">
@@ -1375,8 +1375,26 @@
             <mxPoint x="-322" y="62" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="D_Who2Z1tYLAzOMSO-RR-0" value="pshock13.github.io/shocklp/media/AFE_Flows-Pack.png" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="oBgYVV3uqasPhyjAJSzk-1">
+        <mxCell id="D_Who2Z1tYLAzOMSO-RR-0" value="pshock13.github.io/shocklp/media/AFE_Flows-Pack.png" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="oBgYVV3uqasPhyjAJSzk-1" vertex="1">
           <mxGeometry x="665" y="102" width="318" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="1GgHCs6hm_lFNXkqlS00-0" value="&lt;div&gt;No&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="oBgYVV3uqasPhyjAJSzk-1">
+          <mxGeometry x="542" y="612" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="1GgHCs6hm_lFNXkqlS00-1" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;strokeWidth=2;entryX=0.989;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#f8cecc;strokeColor=#b85450;" edge="1" parent="oBgYVV3uqasPhyjAJSzk-1" source="oBgYVV3uqasPhyjAJSzk-31" target="1GgHCs6hm_lFNXkqlS00-0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="622" as="sourcePoint" />
+            <mxPoint x="520" y="622" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="580" y="622" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1GgHCs6hm_lFNXkqlS00-7" value="&lt;table style=&quot;width: 100% ; height: 100% ; border-collapse: collapse&quot; width=&quot;100%&quot; cellpadding=&quot;4&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr style=&quot;font-size: 17px&quot;&gt;&lt;th align=&quot;center&quot;&gt;Amnesty Bins&lt;br&gt;&lt;/th&gt;&lt;/tr&gt;&lt;tr align=&quot;left&quot;&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;Any time an item is not found in the chute, check the amnesty bins for those items.&lt;/li&gt;&lt;li&gt;Items found on the floor should be placed in amnesty bins to be found later.&lt;/li&gt;&lt;li&gt;If an item has been in the chute for a while and does not pack out with the shipments in that chute, that item needs to be placed in amnesty.&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;overflow=fill;whiteSpace=wrap;" vertex="1" parent="oBgYVV3uqasPhyjAJSzk-1">
+          <mxGeometry x="707" y="649" width="378" height="183" as="geometry" />
+        </mxCell>
+        <mxCell id="90nV9vDJZXtvgrb-yuw7-0" value="&lt;b&gt;There&#39;s a green block in the chute with my items:&lt;br&gt;&lt;/b&gt;&lt;br&gt;That green block corresponds to a tote under the wall. Find that tote, place the block in the tote, and remove the item(s). Those item(s) are to be handles the same as if they were sitting in the pack chute." style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;glass=0;fillColor=#d5e8d4;align=left;strokeColor=#82b366;" vertex="1" parent="oBgYVV3uqasPhyjAJSzk-1">
+          <mxGeometry x="66" y="674" width="372" height="161" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
