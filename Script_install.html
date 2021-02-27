@@ -77,8 +77,12 @@
 	After you've installed TamperMonkey, you can choose the scripts you'd like to add and click the install button next to them.
 	</p>
 	<!--Start install tables-->
-	<h1>Step 1: Install TamperMonkey</h1>
-	<input id="install_btn" type="submit" value="Click Here to Install TamperMonkey" onclick="window.location='https://addons.mozilla.org/firefox/downloads/file/988062/tampermonkey-4.7.5788-an+fx.xpi';"/>
+	<h1>Step 1: Install TamperMonkey</h1>	
+	<div class="step1">
+		<input class="install_btn" type="submit" value="Install TamperMonkey for Firefox" onclick="window.location='https://addons.mozilla.org/firefox/downloads/file/988062/tampermonkey-4.7.5788-an+fx.xpi';"/>
+		<input class="install_btn" type="button" value="Install Tampermonkey for Chrome" onclick="window.location='https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en';"/>
+	</div>
+	
 	<h1>Step 2: Pick your add-ons</h1>
 	<table class="install">
 		<tbody>
