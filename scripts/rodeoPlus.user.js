@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Rodeo Plus
 // @namespace    com.amazon.shocklp
-// @version      1.5.12
+// @version      1.5.13
 // @description  Multiple add-ons that improve the functionality of Rodeo. Read more at https://drive-render.corp.amazon.com/view/shocklp@/Script_install.html#desc1
 // @author       Phillip Shockley | shocklp
 // @include      https://rodeo-iad.amazon.com/*
@@ -256,23 +256,24 @@ document.getElementsByClassName("fcpn-logo")[0].title = `Rodeo Plus V ${currentV
 
 //Determine Fulfillment Center
 var FC = readCookie("fcmenu-warehouseId"); //Get FC
+console.log(FC);
 
 //Shipment ID ==> New Rodeo Tab
-document.querySelectorAll('table a[href*="html?shipmentId"]')
+document.querySelectorAll('table a[href*="&shipmentId="]')
   .forEach((a) => {
     const shipmentId = a.href.match(/\d+$/);
     a.href = `https://rodeo-iad.amazon.com/${FC}/Search?searchKey=${shipmentId}`;
   });
 
 //ASIN ==> FCResearch
-document.querySelectorAll('table a[href*="asin-display.html?asin="]')
+document.querySelectorAll('table a[href*="&asin="]')
   .forEach((a) => {
     var ASIN = a.href.match(/[A-Z0-9]+$/);
     a.href = `http://fcresearch-na.aka.amazon.com/${FC}/results?s=${ASIN}`;
   });
 
 //location ==> FCResearch
-document.querySelectorAll('table a[href*="container-display.html?container="]')
+document.querySelectorAll('table a[href*="&container="]')
   .forEach((a) => {
     var location = a.href.match(/[a-zA-Z0-9-_]+$/);
     a.href = `http://fcresearch-na.aka.amazon.com/${FC}/results?s=${location}`;
@@ -411,6 +412,7 @@ function printAsin(asin, qty) {
       "Content-Type": "application/x-www-form-urlencoded"
     }
   });
+    console.log(`${url}${params}`);
 }
 
 function cptChecker(){
