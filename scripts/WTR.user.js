@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         Workflow Tab Renamer
 // @namespace    com.amazon.shocklp
-// @version      0.5
+// @version      0.6
 // @description  Renames the workflow tabs so that they are different
 // @author       Phillip Shockley | shocklp
-// @downloadURL  https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
-// @updateURL    https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
-// @sourceURL    https://github.com/Pshock13/shocklp/raw/master/scripts/WTR.user.js
+// @downloadURL  https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
+// @updateURL    https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
+// @sourceURL    https://github.com/Pshock13/shocklp/blob/master/scripts/WTR.user.js
 // @match        https://flow-sortation-na.amazon.com/*
+// @require      https://code.jquery.com/jquery-3.3.1.js
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
@@ -38,4 +39,12 @@ if (window.location == 'https://flow-sortation-na.amazon.com/PHL7/#/afe/workforc
     document.getElementsByTagName('title')[0].innerText = `Buffer Status`
 }
 
-
+setTimeout(function newLink(){
+var allA = document.querySelectorAll('td a[class="ng-binding"]');
+console.log(allA);
+document.querySelectorAll('td a[class="ng-binding"]')
+  .forEach((a) => {
+    const aa = a.innerText;
+    a.href = `https://fclm-portal.amazon.com/employee/timeDetails?employeeId=${aa}&warehouseId=PHL7`;
+  });
+}, 1000);
